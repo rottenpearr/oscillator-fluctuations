@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="icon test">
+    <file>images/осциллятор.png</file>
+    <file>images/check.svg</file>
+    <file>images/help.svg</file>
+  </qresource>
+</RCC>
