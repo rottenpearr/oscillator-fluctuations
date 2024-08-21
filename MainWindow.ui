@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>896</width>
-    <height>812</height>
+    <width>1050</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -22,54 +22,135 @@
      <colorrole role="WindowText">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>211</red>
-        <green>177</green>
-        <blue>158</blue>
+        <red>244</red>
+        <green>249</green>
+        <blue>252</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Text">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="ButtonText">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>211</red>
-        <green>177</green>
-        <blue>158</blue>
+        <red>244</red>
+        <green>249</green>
+        <blue>252</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>211</red>
-        <green>177</green>
-        <blue>158</blue>
+        <red>244</red>
+        <green>249</green>
+        <blue>252</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="HighlightedText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Link">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="LinkVisited">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
        </color>
       </brush>
      </colorrole>
@@ -79,6 +160,15 @@
         <red>0</red>
         <green>0</green>
         <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Accent">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>136</red>
+        <green>194</green>
+        <blue>206</blue>
        </color>
       </brush>
      </colorrole>
@@ -87,54 +177,135 @@
      <colorrole role="WindowText">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>211</red>
-        <green>177</green>
-        <blue>158</blue>
+        <red>244</red>
+        <green>249</green>
+        <blue>252</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Text">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="ButtonText">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>211</red>
-        <green>177</green>
-        <blue>158</blue>
+        <red>244</red>
+        <green>249</green>
+        <blue>252</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>211</red>
-        <green>177</green>
-        <blue>158</blue>
+        <red>244</red>
+        <green>249</green>
+        <blue>252</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="HighlightedText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Link">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="LinkVisited">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
        </color>
       </brush>
      </colorrole>
@@ -144,6 +315,15 @@
         <red>0</red>
         <green>0</green>
         <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Accent">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>136</red>
+        <green>194</green>
+        <blue>206</blue>
        </color>
       </brush>
      </colorrole>
@@ -161,9 +341,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>211</red>
-        <green>177</green>
-        <blue>158</blue>
+        <red>244</red>
+        <green>249</green>
+        <blue>252</blue>
        </color>
       </brush>
      </colorrole>
@@ -173,6 +353,15 @@
         <red>0</red>
         <green>0</green>
         <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="BrightText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
        </color>
       </brush>
      </colorrole>
@@ -188,18 +377,90 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>211</red>
-        <green>177</green>
-        <blue>158</blue>
+        <red>244</red>
+        <green>249</green>
+        <blue>252</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>211</red>
-        <green>177</green>
-        <blue>158</blue>
+        <red>244</red>
+        <green>249</green>
+        <blue>252</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Shadow">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Highlight">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="HighlightedText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Link">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="LinkVisited">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="AlternateBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipBase">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="ToolTipText">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>16</red>
+        <green>16</green>
+        <blue>15</blue>
        </color>
       </brush>
      </colorrole>
@@ -209,6 +470,15 @@
         <red>0</red>
         <green>0</green>
         <blue>0</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Accent">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>136</red>
+        <green>194</green>
+        <blue>206</blue>
        </color>
       </brush>
      </colorrole>
@@ -231,50 +501,43 @@
    <string>Моделирование колебаний линейного гармонического осциллятора</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="QIcon::ThemeIcon::MailAttachment"/>
+   <iconset resource="res.qrc">
+    <normaloff>:/icons/images/win icon.svg</normaloff>:/icons/images/win icon.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">/* Основные цвета */
 QWidget {
     color: rgb(0, 0, 0); /* WindowText */
-    background-color: rgb(211, 177, 158); /* Window */
+    background-color: rgb(244, 249, 252); /* Window */
 }
 
 /* Кнопки */
 QPushButton {
-    background-color: rgb(153, 94, 124); /* Button */
-    color: rgb(27, 20, 22); /* ButtonText */
-    border: 1px solid rgb(105, 88, 79); /* Dark */
+    background-color: rgb(136, 194, 206); /* Button */
+    color: rgb(16, 16, 15); /* ButtonText */
+    border: 1px solid rgb(105, 88, 79);
+}
+
+QPushButton:hover {
+    background-color: rgb(147, 208, 220);  /* Button */
+}
+
+QPushButton:pressed {
+    background-color: rgb(110, 158, 167);  /* Button */
 }
 
 /* Текстовые поля */
 QLineEdit, QTextEdit, QPlainTextEdit {
     background-color: rgb(255, 255, 255); /* Base */
-    color: rgb(27, 20, 22); /* Text */
+    color: rgb(16, 16, 15); /* Text */
     border: 1px solid rgb(141, 118, 105); /* Mid */
 }
 
-/* Метки */
+/* Лейблы */
 QLabel {
-    color: rgb(27, 20, 22); /* WindowText */
+    color: rgb(16, 16, 15); /* WindowText */
 }
 
-/* Подсказки */
-QToolTip {
-    background-color: rgb(255, 255, 220); /* ToolTipBase */
-    color: rgb(0, 0, 0); /* ToolTipText */
-    border: 1px solid rgb(0, 0, 0); /* Shadow */
-}
-
-/* Альтернативная база для элементов списка */
-QWidget:item {
-    background-color: rgb(233, 216, 206); /* AlternateBase */
-}
-
-/* Placeholder текст */
-QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholderText {
-    color: rgba(0, 0, 0, 127); /* PlaceholderText */
-}
 
 </string>
   </property>
@@ -294,9 +557,9 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>211</red>
-         <green>177</green>
-         <blue>158</blue>
+         <red>244</red>
+         <green>249</green>
+         <blue>252</blue>
         </color>
        </brush>
       </colorrole>
@@ -321,18 +584,18 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>211</red>
-         <green>177</green>
-         <blue>158</blue>
+         <red>244</red>
+         <green>249</green>
+         <blue>252</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>211</red>
-         <green>177</green>
-         <blue>158</blue>
+         <red>244</red>
+         <green>249</green>
+         <blue>252</blue>
         </color>
        </brush>
       </colorrole>
@@ -359,9 +622,9 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>211</red>
-         <green>177</green>
-         <blue>158</blue>
+         <red>244</red>
+         <green>249</green>
+         <blue>252</blue>
         </color>
        </brush>
       </colorrole>
@@ -386,18 +649,18 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>211</red>
-         <green>177</green>
-         <blue>158</blue>
+         <red>244</red>
+         <green>249</green>
+         <blue>252</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>211</red>
-         <green>177</green>
-         <blue>158</blue>
+         <red>244</red>
+         <green>249</green>
+         <blue>252</blue>
         </color>
        </brush>
       </colorrole>
@@ -424,9 +687,9 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>211</red>
-         <green>177</green>
-         <blue>158</blue>
+         <red>244</red>
+         <green>249</green>
+         <blue>252</blue>
         </color>
        </brush>
       </colorrole>
@@ -451,18 +714,18 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>211</red>
-         <green>177</green>
-         <blue>158</blue>
+         <red>244</red>
+         <green>249</green>
+         <blue>252</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>211</red>
-         <green>177</green>
-         <blue>158</blue>
+         <red>244</red>
+         <green>249</green>
+         <blue>252</blue>
         </color>
        </brush>
       </colorrole>
@@ -484,9 +747,9 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
    <property name="styleSheet">
     <string notr="true">font-family: Roboto Medium;</string>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="2,4,1">
+   <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="4,12,2">
     <property name="spacing">
-     <number>5</number>
+     <number>20</number>
     </property>
     <property name="leftMargin">
      <number>20</number>
@@ -517,9 +780,9 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="90">
-            <red>153</red>
-            <green>94</green>
-            <blue>124</blue>
+            <red>136</red>
+            <green>194</green>
+            <blue>206</blue>
            </color>
           </brush>
          </colorrole>
@@ -544,18 +807,18 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="90">
-            <red>153</red>
-            <green>94</green>
-            <blue>124</blue>
+            <red>136</red>
+            <green>194</green>
+            <blue>206</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="90">
-            <red>153</red>
-            <green>94</green>
-            <blue>124</blue>
+            <red>136</red>
+            <green>194</green>
+            <blue>206</blue>
            </color>
           </brush>
          </colorrole>
@@ -582,9 +845,9 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="90">
-            <red>153</red>
-            <green>94</green>
-            <blue>124</blue>
+            <red>136</red>
+            <green>194</green>
+            <blue>206</blue>
            </color>
           </brush>
          </colorrole>
@@ -609,18 +872,18 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="90">
-            <red>153</red>
-            <green>94</green>
-            <blue>124</blue>
+            <red>136</red>
+            <green>194</green>
+            <blue>206</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="90">
-            <red>153</red>
-            <green>94</green>
-            <blue>124</blue>
+            <red>136</red>
+            <green>194</green>
+            <blue>206</blue>
            </color>
           </brush>
          </colorrole>
@@ -647,9 +910,9 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="90">
-            <red>153</red>
-            <green>94</green>
-            <blue>124</blue>
+            <red>136</red>
+            <green>194</green>
+            <blue>206</blue>
            </color>
           </brush>
          </colorrole>
@@ -674,18 +937,18 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="90">
-            <red>153</red>
-            <green>94</green>
-            <blue>124</blue>
+            <red>136</red>
+            <green>194</green>
+            <blue>206</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="90">
-            <red>153</red>
-            <green>94</green>
-            <blue>124</blue>
+            <red>136</red>
+            <green>194</green>
+            <blue>206</blue>
            </color>
           </brush>
          </colorrole>
@@ -708,12 +971,12 @@ QLineEdit:placeholderText, QTextEdit:placeholderText, QPlainTextEdit:placeholder
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgba(153, 94, 124, 90);
+       <string notr="true">background-color: rgba(136, 194, 206, 90);
 border: 1px solid rgba(255, 255, 255, 80);
 border-radius: 6px;
 </string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,1,2,2,2,2,2,2,2,2,1">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,1,2,2,2,2,2,2,2,2,1,1,1">
        <property name="spacing">
         <number>20</number>
        </property>
@@ -746,7 +1009,7 @@ border-radius: 6px;
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="0,15,0">
+        <layout class="QHBoxLayout" name="layout_input_data" stretch="0,15,0">
          <property name="spacing">
           <number>6</number>
          </property>
@@ -776,7 +1039,7 @@ border-radius: 6px;
           <widget class="QLabel" name="label">
            <property name="minimumSize">
             <size>
-             <width>0</width>
+             <width>200</width>
              <height>40</height>
             </size>
            </property>
@@ -786,7 +1049,7 @@ border: none;
 border-radius: none;</string>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Ввод данных&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;Ввод данных&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -822,7 +1085,7 @@ border-radius: none;</string>
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,2,15,0">
+        <layout class="QHBoxLayout" name="layout_t0" stretch="0,2,15,0">
          <item>
           <spacer name="horizontalSpacer_22">
            <property name="orientation">
@@ -837,11 +1100,11 @@ border-radius: none;</string>
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="label_t0">
            <property name="minimumSize">
             <size>
              <width>50</width>
-             <height>0</height>
+             <height>40</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -850,7 +1113,7 @@ border: none;
 border-radius: none;</string>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;t&lt;/span&gt;&lt;span style=&quot; font-size:24pt; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;t&lt;/span&gt;&lt;span style=&quot; font-size:22pt; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="textFormat">
             <enum>Qt::TextFormat::AutoText</enum>
@@ -858,10 +1121,16 @@ border-radius: none;</string>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
            </property>
+           <property name="wordWrap">
+            <bool>false</bool>
+           </property>
+           <property name="openExternalLinks">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit">
+          <widget class="QLineEdit" name="entry_t0">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -899,7 +1168,7 @@ font-size: 16pt;
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,2,15,0">
+        <layout class="QHBoxLayout" name="layout_tk" stretch="0,2,15,0">
          <item>
           <spacer name="horizontalSpacer_21">
            <property name="orientation">
@@ -914,11 +1183,11 @@ font-size: 16pt;
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_3">
+          <widget class="QLabel" name="label_tk">
            <property name="minimumSize">
             <size>
              <width>50</width>
-             <height>0</height>
+             <height>40</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -927,7 +1196,7 @@ border: none;
 border-radius: none;</string>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;t&lt;/span&gt;&lt;span style=&quot; font-size:24pt; vertical-align:sub;&quot;&gt;k&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;t&lt;/span&gt;&lt;span style=&quot; font-size:22pt; vertical-align:sub;&quot;&gt;k&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -935,7 +1204,7 @@ border-radius: none;</string>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_2">
+          <widget class="QLineEdit" name="entry_tk">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -966,7 +1235,7 @@ font-size: 16pt;</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,2,15,0">
+        <layout class="QHBoxLayout" name="layout_dt1" stretch="0,2,15,0">
          <item>
           <spacer name="horizontalSpacer_20">
            <property name="orientation">
@@ -981,11 +1250,11 @@ font-size: 16pt;</string>
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_4">
+          <widget class="QLabel" name="label_dt1">
            <property name="minimumSize">
             <size>
              <width>50</width>
-             <height>0</height>
+             <height>40</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -994,7 +1263,7 @@ border: none;
 border-radius: none;</string>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;dt&lt;/span&gt;&lt;span style=&quot; font-size:24pt; vertical-align:sub;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;dt&lt;/span&gt;&lt;span style=&quot; font-size:22pt; vertical-align:sub;&quot;&gt;1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1002,7 +1271,7 @@ border-radius: none;</string>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_3">
+          <widget class="QLineEdit" name="entry_dt1">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -1033,7 +1302,7 @@ font-size: 16pt;</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,2,15,0">
+        <layout class="QHBoxLayout" name="layout_dt2" stretch="0,2,15,0">
          <item>
           <spacer name="horizontalSpacer_14">
            <property name="orientation">
@@ -1048,11 +1317,11 @@ font-size: 16pt;</string>
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_5">
+          <widget class="QLabel" name="label_dt2">
            <property name="minimumSize">
             <size>
              <width>50</width>
-             <height>0</height>
+             <height>40</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -1061,7 +1330,7 @@ border: none;
 border-radius: none;</string>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;dt&lt;/span&gt;&lt;span style=&quot; font-size:24pt; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;dt&lt;/span&gt;&lt;span style=&quot; font-size:22pt; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1069,7 +1338,7 @@ border-radius: none;</string>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_4">
+          <widget class="QLineEdit" name="entry_dt2">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -1103,7 +1372,7 @@ font-size: 16pt;</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,2,15,0">
+        <layout class="QHBoxLayout" name="layout_x0" stretch="0,2,15,0">
          <item>
           <spacer name="horizontalSpacer_12">
            <property name="orientation">
@@ -1118,11 +1387,11 @@ font-size: 16pt;</string>
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_6">
+          <widget class="QLabel" name="label_x0">
            <property name="minimumSize">
             <size>
              <width>50</width>
-             <height>0</height>
+             <height>40</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -1131,7 +1400,7 @@ border: none;
 border-radius: none;</string>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-size:24pt; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-size:22pt; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1139,7 +1408,7 @@ border-radius: none;</string>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_5">
+          <widget class="QLineEdit" name="entry_x0">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -1173,7 +1442,7 @@ font-size: 16pt;</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="0,2,15,0">
+        <layout class="QHBoxLayout" name="layout_v0" stretch="0,2,15,0">
          <item>
           <spacer name="horizontalSpacer_11">
            <property name="orientation">
@@ -1188,11 +1457,11 @@ font-size: 16pt;</string>
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_7">
+          <widget class="QLabel" name="label_v0">
            <property name="minimumSize">
             <size>
              <width>50</width>
-             <height>0</height>
+             <height>40</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -1201,7 +1470,7 @@ border: none;
 border-radius: none;</string>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;v&lt;/span&gt;&lt;span style=&quot; font-size:24pt; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;v&lt;/span&gt;&lt;span style=&quot; font-size:22pt; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1209,7 +1478,7 @@ border-radius: none;</string>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_6">
+          <widget class="QLineEdit" name="entry_v0">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -1240,7 +1509,7 @@ font-size: 16pt;</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="0,2,15,0">
+        <layout class="QHBoxLayout" name="layout_w0" stretch="0,2,15,0">
          <item>
           <spacer name="horizontalSpacer_6">
            <property name="orientation">
@@ -1255,11 +1524,11 @@ font-size: 16pt;</string>
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_8">
+          <widget class="QLabel" name="label_w0">
            <property name="minimumSize">
             <size>
              <width>50</width>
-             <height>0</height>
+             <height>40</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -1268,7 +1537,7 @@ border: none;
 border-radius: none;</string>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;ω&lt;/span&gt;&lt;span style=&quot; font-size:24pt; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;ω&lt;/span&gt;&lt;span style=&quot; font-size:22pt; vertical-align:sub;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1276,7 +1545,7 @@ border-radius: none;</string>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_7">
+          <widget class="QLineEdit" name="entry_w0">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -1307,7 +1576,7 @@ font-size: 16pt;</string>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,2,15,0">
+        <layout class="QHBoxLayout" name="layout_y" stretch="0,2,15,0">
          <item>
           <spacer name="horizontalSpacer_5">
            <property name="orientation">
@@ -1322,11 +1591,11 @@ font-size: 16pt;</string>
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_9">
+          <widget class="QLabel" name="label_y">
            <property name="minimumSize">
             <size>
              <width>50</width>
-             <height>0</height>
+             <height>40</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -1335,7 +1604,7 @@ border: none;
 border-radius: none;</string>
            </property>
            <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;y&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;y&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1343,7 +1612,7 @@ border-radius: none;</string>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_8">
+          <widget class="QLineEdit" name="entry_y">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -1374,6 +1643,112 @@ font-size: 16pt;</string>
         </layout>
        </item>
        <item>
+        <spacer name="horizontalSpacer_29">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_info" stretch="0,17,0">
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_info">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="baseSize">
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="contextMenuPolicy">
+            <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LayoutDirection::LeftToRight</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+border: 1px solid rgba(255, 255, 255, 80);
+border-radius: 6px;
+font-size: 16pt;
+background-color: rgb(136, 194, 206); 
+}
+
+QPushButton:hover {
+background-color: rgb(147, 208, 220);
+}
+
+QPushButton:pressed {
+    background-color: rgb(110, 158, 167);
+}</string>
+           </property>
+           <property name="text">
+            <string>ИНФО</string>
+           </property>
+           <property name="icon">
+            <iconset resource="res.qrc">
+             <normaloff>:/icons/images/help.svg</normaloff>:/icons/images/help.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="autoRepeatDelay">
+            <number>300</number>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
+           <property name="default">
+            <bool>false</bool>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <spacer name="horizontalSpacer_7">
          <property name="orientation">
           <enum>Qt::Orientation::Horizontal</enum>
@@ -1390,7 +1765,13 @@ font-size: 16pt;</string>
      </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <layout class="QVBoxLayout" name="verticalLayout_3" stretch="5,12,5,1">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
+      </property>
       <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
@@ -1405,27 +1786,48 @@ font-size: 16pt;</string>
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label_11">
-        <property name="text">
-         <string>Моделирование колебаний линейного гармоничесокго осциллятора</string>
+       <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="0">
+        <property name="spacing">
+         <number>0</number>
         </property>
-       </widget>
+        <property name="sizeConstraint">
+         <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_graph">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QLabel" name="label_10">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>625</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_3">
+       <spacer name="horizontalSpacer_28">
         <property name="orientation">
          <enum>Qt::Orientation::Horizontal</enum>
         </property>
@@ -1437,74 +1839,132 @@ font-size: 16pt;</string>
         </property>
        </spacer>
       </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="0,0,0,0,0">
+        <property name="spacing">
+         <number>20</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
+        </property>
+        <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_reset">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 1px solid rgba(255, 255, 255, 80);
+border-radius: 6px;
+font-size: 16pt;</string>
+          </property>
+          <property name="text">
+           <string>СБРОС</string>
+          </property>
+          <property name="icon">
+           <iconset resource="res.qrc">
+            <normaloff>:/icons/images/reset.svg</normaloff>:/icons/images/reset.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_start">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>100</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 1px solid rgba(255, 255, 255, 80);
+border-radius: 6px;
+font-size: 16pt;</string>
+          </property>
+          <property name="text">
+           <string>СГЕНЕРИРОВАТЬ</string>
+          </property>
+          <property name="icon">
+           <iconset resource="res.qrc">
+            <normaloff>:/icons/images/start.svg</normaloff>:/icons/images/start.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,2,1,2,1">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="10,0,1,0,10">
+      <property name="spacing">
+       <number>20</number>
+      </property>
       <item>
        <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>600</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="baseSize">
-         <size>
-          <width>100</width>
-          <height>100</height>
-         </size>
-        </property>
-        <property name="contextMenuPolicy">
-         <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border: 1px solid rgba(255, 255, 255, 80);
-border-radius: 6px;
-font-size: 16pt;</string>
-        </property>
-        <property name="text">
-         <string>ИНФО</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>images/help.svg</normaloff>images/help.svg</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>24</width>
-          <height>24</height>
-         </size>
-        </property>
-        <property name="autoRepeatDelay">
-         <number>300</number>
-        </property>
-        <property name="autoDefault">
-         <bool>false</bool>
-        </property>
-        <property name="default">
-         <bool>false</bool>
-        </property>
-        <property name="flat">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_19">
         <property name="orientation">
          <enum>Qt::Orientation::Horizontal</enum>
         </property>
@@ -1517,11 +1977,17 @@ font-size: 16pt;</string>
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="button_print">
         <property name="minimumSize">
          <size>
-          <width>70</width>
+          <width>110</width>
           <height>50</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1530,29 +1996,76 @@ border-radius: 6px;
 font-size: 16pt;</string>
         </property>
         <property name="text">
-         <string>СТАРТ</string>
+         <string>ПЕЧАТЬ</string>
         </property>
         <property name="icon">
          <iconset resource="res.qrc">
-          <normaloff>:/icon test/images/check.svg</normaloff>:/icon test/images/check.svg</iconset>
+          <normaloff>:/icons/images/print.svg</normaloff>:/icons/images/print.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
-          <width>24</width>
-          <height>24</height>
+          <width>20</width>
+          <height>20</height>
          </size>
         </property>
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer_4">
+       <spacer name="horizontalSpacer_27">
         <property name="orientation">
          <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
-          <height>40</height>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="button_excel">
+        <property name="minimumSize">
+         <size>
+          <width>110</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: 1px solid rgba(255, 255, 255, 80);
+border-radius: 6px;
+font-size: 16pt;</string>
+        </property>
+        <property name="text">
+         <string>EXCEL</string>
+        </property>
+        <property name="icon">
+         <iconset resource="res.qrc">
+          <normaloff>:/icons/images/graph.svg</normaloff>:/icons/images/graph.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_19">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
          </size>
         </property>
        </spacer>

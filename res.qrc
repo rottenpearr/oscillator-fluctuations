@@ -1,7 +1,11 @@
 <RCC>
-  <qresource prefix="icon test">
-    <file>images/осциллятор.png</file>
-    <file>images/check.svg</file>
+  <qresource prefix="icons">
+    <file>images/help icon.svg</file>
+    <file>images/graph.svg</file>
     <file>images/help.svg</file>
+    <file>images/print.svg</file>
+    <file>images/reset.svg</file>
+    <file>images/start.svg</file>
+    <file>images/win icon.svg</file>
   </qresource>
 </RCC>
