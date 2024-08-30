@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="icons">
     <file>images/help icon.svg</file>
+    <file>images/error.svg</file>
     <file>images/graph.svg</file>
     <file>images/help.svg</file>
     <file>images/print.svg</file>
