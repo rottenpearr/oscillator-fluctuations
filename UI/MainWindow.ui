@@ -501,8 +501,8 @@
    <string>Моделирование колебаний линейного гармонического осциллятора</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res.qrc">
-    <normaloff>:/icons/images/win icon.svg</normaloff>:/icons/images/win icon.svg</iconset>
+   <iconset resource="../images/res.qrc">
+    <normaloff>:/icons/win icon.svg</normaloff>:/icons/win icon.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">/* Основные цвета */
@@ -980,7 +980,7 @@ border: 1px solid rgba(255, 255, 255, 80);
 border-radius: 6px;
 </string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,1,2,2,2,2,2,2,2,2,1,1,1">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,1,2,2,2,2,2,2,2,2,1,2,0,2,1">
        <property name="spacing">
         <number>20</number>
        </property>
@@ -1647,6 +1647,94 @@ font-size: 16pt;</string>
         </layout>
        </item>
        <item>
+        <spacer name="horizontalSpacer_32">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,17,0">
+         <item>
+          <spacer name="horizontalSpacer_31">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_upload">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="baseSize">
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+border: 1px solid rgba(255, 255, 255, 80);
+border-radius: 6px;
+font-size: 16pt;
+background-color: rgb(136, 194, 206); 
+}
+
+QPushButton:hover {
+background-color: rgb(147, 208, 220);
+}
+
+QPushButton:pressed {
+    background-color: rgb(110, 158, 167);
+}</string>
+           </property>
+           <property name="text">
+            <string>ЗАГРУЗИТЬ</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images/res.qrc">
+             <normaloff>:/icons/upload.svg</normaloff>:/icons/upload.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_30">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <spacer name="horizontalSpacer_29">
          <property name="orientation">
           <enum>Qt::Orientation::Horizontal</enum>
@@ -1654,7 +1742,7 @@ font-size: 16pt;</string>
          <property name="sizeHint" stdset="0">
           <size>
            <width>40</width>
-           <height>40</height>
+           <height>20</height>
           </size>
          </property>
         </spacer>
@@ -1714,8 +1802,8 @@ QPushButton:pressed {
             <string>ИНФО</string>
            </property>
            <property name="icon">
-            <iconset resource="res.qrc">
-             <normaloff>:/icons/images/help.svg</normaloff>:/icons/images/help.svg</iconset>
+            <iconset resource="../images/res.qrc">
+             <normaloff>:/icons/help.svg</normaloff>:/icons/help.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -1769,7 +1857,7 @@ QPushButton:pressed {
      </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_3" stretch="5,12,5,1">
+     <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,12,1,0,1">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -1831,6 +1919,117 @@ QPushButton:pressed {
        </layout>
       </item>
       <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="5,2,1,2,5">
+        <item>
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 1px solid rgba(255, 255, 255, 80);
+border-radius: 6px;
+font-size: 16pt;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../images/res.qrc">
+            <normaloff>:/icons/back.svg</normaloff>:/icons/back.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>40</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: 1px solid rgba(255, 255, 255, 80);
+border-radius: 6px;
+font-size: 16pt;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../images/res.qrc">
+            <normaloff>:/icons/forward.svg</normaloff>:/icons/forward.svg</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_28">
         <property name="orientation">
          <enum>Qt::Orientation::Horizontal</enum>
@@ -1838,7 +2037,7 @@ QPushButton:pressed {
         <property name="sizeHint" stdset="0">
          <size>
           <width>40</width>
-          <height>40</height>
+          <height>20</height>
          </size>
         </property>
        </spacer>
@@ -1887,8 +2086,8 @@ font-size: 16pt;</string>
            <string>СБРОС</string>
           </property>
           <property name="icon">
-           <iconset resource="res.qrc">
-            <normaloff>:/icons/images/reset.svg</normaloff>:/icons/images/reset.svg</iconset>
+           <iconset resource="../images/res.qrc">
+            <normaloff>:/icons/reset.svg</normaloff>:/icons/reset.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -1934,8 +2133,8 @@ font-size: 16pt;</string>
            <string>СГЕНЕРИРОВАТЬ</string>
           </property>
           <property name="icon">
-           <iconset resource="res.qrc">
-            <normaloff>:/icons/images/start.svg</normaloff>:/icons/images/start.svg</iconset>
+           <iconset resource="../images/res.qrc">
+            <normaloff>:/icons/start.svg</normaloff>:/icons/start.svg</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -2003,8 +2202,8 @@ font-size: 16pt;</string>
          <string>ПЕЧАТЬ</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
-          <normaloff>:/icons/images/print.svg</normaloff>:/icons/images/print.svg</iconset>
+         <iconset resource="../images/res.qrc">
+          <normaloff>:/icons/print.svg</normaloff>:/icons/print.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -2050,8 +2249,8 @@ font-size: 16pt;</string>
          <string>EXCEL</string>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
-          <normaloff>:/icons/images/graph.svg</normaloff>:/icons/images/graph.svg</iconset>
+         <iconset resource="../images/res.qrc">
+          <normaloff>:/icons/graph.svg</normaloff>:/icons/graph.svg</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -2080,7 +2279,7 @@ font-size: 16pt;</string>
   </widget>
  </widget>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../images/res.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>back.svg</file>
+    <file>forward.svg</file>
+    <file>upload.svg</file>
+    <file>error.svg</file>
+    <file>graph.svg</file>
+    <file>help.svg</file>
+    <file>help icon.svg</file>
+    <file>print.svg</file>
+    <file>reset.svg</file>
+    <file>start.svg</file>
+    <file>win icon.svg</file>
+  </qresource>
+</RCC>

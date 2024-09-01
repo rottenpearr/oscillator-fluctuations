@@ -19,8 +19,6 @@ from PySide6.QtWidgets import (QApplication, QGroupBox, QHBoxLayout, QLabel,
     QLayout, QLineEdit, QMainWindow, QPushButton,
     QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 import resources
-
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -103,40 +101,43 @@ class Ui_MainWindow(object):
         MainWindow.setCursor(QCursor(Qt.CursorShape.ArrowCursor))
         MainWindow.setMouseTracking(False)
         icon = QIcon()
-        icon.addFile(u":/icons/images/win icon.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon.addFile(u":/icons/win icon.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"/* \u041e\u0441\u043d\u043e\u0432\u043d\u044b\u0435 \u0446\u0432\u0435\u0442\u0430 */\n"
 "QWidget {\n"
-"    color: rgb(0, 0, 0); /* WindowText */\n"
-"    background-color: rgb(244, 249, 252); /* Window */\n"
+"    color: rgb(0, 0, 0);\n"
+"    background-color: rgb(244, 249, 252); \n"
 "}\n"
 "\n"
 "/* \u041a\u043d\u043e\u043f\u043a\u0438 */\n"
 "QPushButton {\n"
-"    background-color: rgb(136, 194, 206); /* Button */\n"
-"    color: rgb(16, 16, 15); /* ButtonText */\n"
+"    background-color: rgb(136, 194, 206);\n"
+"    color: rgb(16, 16, 15);\n"
 "    border: 1px solid rgb(105, 88, 79);\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"    background-color: rgb(147, 208, 220);  /* Button */\n"
+"    background-color: rgb(147, 208, 220);\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"    background-color: rgb(110, 158, 167);  /* Button */\n"
+"    background-color: rgb(110, 158, 167);\n"
+"}\n"
+"\n"
+"QPushButton:disabled {\n"
+"    background-color: rgb(214, 223, 232);\n"
 "}\n"
 "\n"
 "/* \u0422\u0435\u043a\u0441\u0442\u043e\u0432\u044b\u0435 \u043f\u043e\u043b\u044f */\n"
 "QLineEdit, QTextEdit, QPlainTextEdit {\n"
-"    background-color: rgb(255, 255, 255); /* Base */\n"
-"    color: rgb(16, 16, 15); /* Text */\n"
-"    border: 1px solid rgb(141, 118, 105); /* Mid */\n"
+"    background-color: rgb(255, 255, 255);\n"
+"    color: rgb(16, 16, 15);\n"
+"    border: 1px solid rgb(141, 118, 105);\n"
 "}\n"
 "\n"
 "/* \u041b\u0435\u0439\u0431\u043b\u044b */\n"
 "QLabel {\n"
-"    color: rgb(16, 16, 15"
-                        "); /* WindowText */\n"
+"    color: rgb(16, 16, 15);\n"
 "}\n"
 "\n"
 "\n"
@@ -545,7 +546,50 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.layout_y)
 
-        self.horizontalSpacer_29 = QSpacerItem(40, 40, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_32 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.verticalLayout.addItem(self.horizontalSpacer_32)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer_31 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_31)
+
+        self.button_upload = QPushButton(self.data_input_groupBox)
+        self.button_upload.setObjectName(u"button_upload")
+        self.button_upload.setMinimumSize(QSize(100, 50))
+        self.button_upload.setBaseSize(QSize(100, 100))
+        self.button_upload.setStyleSheet(u"QPushButton {\n"
+"border: 1px solid rgba(255, 255, 255, 80);\n"
+"border-radius: 6px;\n"
+"font-size: 16pt;\n"
+"background-color: rgb(136, 194, 206); \n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgb(147, 208, 220);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(110, 158, 167);\n"
+"}")
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/upload.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_upload.setIcon(icon1)
+        self.button_upload.setIconSize(QSize(20, 20))
+
+        self.horizontalLayout.addWidget(self.button_upload)
+
+        self.horizontalSpacer_30 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_30)
+
+        self.horizontalLayout.setStretch(1, 17)
+
+        self.verticalLayout.addLayout(self.horizontalLayout)
+
+        self.horizontalSpacer_29 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.verticalLayout.addItem(self.horizontalSpacer_29)
 
@@ -575,9 +619,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "    background-color: rgb(110, 158, 167);\n"
 "}")
-        icon1 = QIcon()
-        icon1.addFile(u":/icons/images/help.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.button_info.setIcon(icon1)
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/help.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_info.setIcon(icon2)
         self.button_info.setIconSize(QSize(20, 20))
         self.button_info.setAutoRepeatDelay(300)
         self.button_info.setAutoDefault(False)
@@ -608,8 +652,9 @@ class Ui_MainWindow(object):
         self.verticalLayout.setStretch(9, 2)
         self.verticalLayout.setStretch(10, 2)
         self.verticalLayout.setStretch(11, 1)
-        self.verticalLayout.setStretch(12, 1)
-        self.verticalLayout.setStretch(13, 1)
+        self.verticalLayout.setStretch(12, 2)
+        self.verticalLayout.setStretch(14, 2)
+        self.verticalLayout.setStretch(15, 1)
 
         self.horizontalLayout_9.addWidget(self.data_input_groupBox)
 
@@ -637,7 +682,57 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_14)
 
-        self.horizontalSpacer_28 = QSpacerItem(40, 40, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.horizontalLayout_2.addItem(self.verticalSpacer_5)
+
+        self.pushButton = QPushButton(self.centralwidget)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setMinimumSize(QSize(40, 40))
+        self.pushButton.setBaseSize(QSize(40, 30))
+        self.pushButton.setStyleSheet(u"border: 1px solid rgba(255, 255, 255, 80);\n"
+"border-radius: 6px;\n"
+"font-size: 16pt;")
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/back.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.pushButton.setIcon(icon3)
+        self.pushButton.setIconSize(QSize(20, 20))
+
+        self.horizontalLayout_2.addWidget(self.pushButton)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.horizontalLayout_2.addItem(self.verticalSpacer_4)
+
+        self.pushButton_2 = QPushButton(self.centralwidget)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setMinimumSize(QSize(40, 40))
+        self.pushButton_2.setBaseSize(QSize(40, 30))
+        self.pushButton_2.setStyleSheet(u"border: 1px solid rgba(255, 255, 255, 80);\n"
+"border-radius: 6px;\n"
+"font-size: 16pt;")
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/forward.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.pushButton_2.setIcon(icon4)
+        self.pushButton_2.setIconSize(QSize(20, 20))
+
+        self.horizontalLayout_2.addWidget(self.pushButton_2)
+
+        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.horizontalLayout_2.addItem(self.verticalSpacer_6)
+
+        self.horizontalLayout_2.setStretch(0, 5)
+        self.horizontalLayout_2.setStretch(1, 2)
+        self.horizontalLayout_2.setStretch(2, 1)
+        self.horizontalLayout_2.setStretch(3, 2)
+        self.horizontalLayout_2.setStretch(4, 5)
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_2)
+
+        self.horizontalSpacer_28 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.verticalLayout_3.addItem(self.horizontalSpacer_28)
 
@@ -656,9 +751,9 @@ class Ui_MainWindow(object):
         self.button_reset.setStyleSheet(u"border: 1px solid rgba(255, 255, 255, 80);\n"
 "border-radius: 6px;\n"
 "font-size: 16pt;")
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/images/reset.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.button_reset.setIcon(icon2)
+        icon5 = QIcon()
+        icon5.addFile(u":/icons/reset.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_reset.setIcon(icon5)
         self.button_reset.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_12.addWidget(self.button_reset)
@@ -674,9 +769,9 @@ class Ui_MainWindow(object):
         self.button_start.setStyleSheet(u"border: 1px solid rgba(255, 255, 255, 80);\n"
 "border-radius: 6px;\n"
 "font-size: 16pt;")
-        icon3 = QIcon()
-        icon3.addFile(u":/icons/images/start.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.button_start.setIcon(icon3)
+        icon6 = QIcon()
+        icon6.addFile(u":/icons/start.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_start.setIcon(icon6)
         self.button_start.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_12.addWidget(self.button_start)
@@ -688,10 +783,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_3.addLayout(self.horizontalLayout_12)
 
-        self.verticalLayout_3.setStretch(0, 5)
+        self.verticalLayout_3.setStretch(0, 1)
         self.verticalLayout_3.setStretch(1, 12)
-        self.verticalLayout_3.setStretch(2, 5)
-        self.verticalLayout_3.setStretch(3, 1)
+        self.verticalLayout_3.setStretch(2, 1)
+        self.verticalLayout_3.setStretch(4, 1)
 
         self.horizontalLayout_9.addLayout(self.verticalLayout_3)
 
@@ -709,9 +804,9 @@ class Ui_MainWindow(object):
         self.button_print.setStyleSheet(u"border: 1px solid rgba(255, 255, 255, 80);\n"
 "border-radius: 6px;\n"
 "font-size: 16pt;")
-        icon4 = QIcon()
-        icon4.addFile(u":/icons/images/print.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.button_print.setIcon(icon4)
+        icon7 = QIcon()
+        icon7.addFile(u":/icons/print.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_print.setIcon(icon7)
         self.button_print.setIconSize(QSize(20, 20))
 
         self.verticalLayout_2.addWidget(self.button_print)
@@ -727,9 +822,9 @@ class Ui_MainWindow(object):
         self.button_excel.setStyleSheet(u"border: 1px solid rgba(255, 255, 255, 80);\n"
 "border-radius: 6px;\n"
 "font-size: 16pt;")
-        icon5 = QIcon()
-        icon5.addFile(u":/icons/images/graph.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.button_excel.setIcon(icon5)
+        icon8 = QIcon()
+        icon8.addFile(u":/icons/graph.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.button_excel.setIcon(icon8)
         self.button_excel.setIconSize(QSize(20, 20))
 
         self.verticalLayout_2.addWidget(self.button_excel)
@@ -768,8 +863,11 @@ class Ui_MainWindow(object):
         self.label_v0.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">v</span><span style=\" font-size:22pt; vertical-align:sub;\">0</span></p></body></html>", None))
         self.label_w0.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">\u03c9</span><span style=\" font-size:22pt; vertical-align:sub;\">0</span></p></body></html>", None))
         self.label_y.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">y</span></p></body></html>", None))
+        self.button_upload.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0410\u0413\u0420\u0423\u0417\u0418\u0422\u042c", None))
         self.button_info.setText(QCoreApplication.translate("MainWindow", u"\u0418\u041d\u0424\u041e", None))
         self.label_graph.setText("")
+        self.pushButton.setText("")
+        self.pushButton_2.setText("")
         self.button_reset.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0411\u0420\u041e\u0421", None))
         self.button_start.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0413\u0415\u041d\u0415\u0420\u0418\u0420\u041e\u0412\u0410\u0422\u042c", None))
         self.button_print.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0415\u0427\u0410\u0422\u042c", None))
