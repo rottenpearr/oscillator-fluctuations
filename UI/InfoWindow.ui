@@ -537,6 +537,13 @@ QLineEdit, QTextEdit, QPlainTextEdit {
 QLabel {
     color: rgb(16, 16, 15); /* WindowText */
 }
+
+/* Скроллбар */
+QScrollBar:vertical {
+        border: none;
+        background-color: rgb(244, 249, 252); /* Цвет фона */
+        width: 14px; /* Ширина скроллбара */
+    }
 </string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -607,7 +614,7 @@ QLabel {
           </colorrole>
           <colorrole role="Button">
            <brush brushstyle="SolidPattern">
-            <color alpha="255">
+            <color alpha="90">
              <red>136</red>
              <green>194</green>
              <blue>206</blue>
@@ -642,20 +649,20 @@ QLabel {
            </brush>
           </colorrole>
           <colorrole role="Base">
-           <brush brushstyle="SolidPattern">
+           <brush brushstyle="NoBrush">
             <color alpha="255">
-             <red>244</red>
-             <green>249</green>
-             <blue>252</blue>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
             </color>
            </brush>
           </colorrole>
           <colorrole role="Window">
            <brush brushstyle="SolidPattern">
-            <color alpha="255">
-             <red>244</red>
-             <green>249</green>
-             <blue>252</blue>
+            <color alpha="90">
+             <red>136</red>
+             <green>194</green>
+             <blue>206</blue>
             </color>
            </brush>
           </colorrole>
@@ -762,7 +769,7 @@ QLabel {
           </colorrole>
           <colorrole role="Button">
            <brush brushstyle="SolidPattern">
-            <color alpha="255">
+            <color alpha="90">
              <red>136</red>
              <green>194</green>
              <blue>206</blue>
@@ -797,20 +804,20 @@ QLabel {
            </brush>
           </colorrole>
           <colorrole role="Base">
-           <brush brushstyle="SolidPattern">
+           <brush brushstyle="NoBrush">
             <color alpha="255">
-             <red>244</red>
-             <green>249</green>
-             <blue>252</blue>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
             </color>
            </brush>
           </colorrole>
           <colorrole role="Window">
            <brush brushstyle="SolidPattern">
-            <color alpha="255">
-             <red>244</red>
-             <green>249</green>
-             <blue>252</blue>
+            <color alpha="90">
+             <red>136</red>
+             <green>194</green>
+             <blue>206</blue>
             </color>
            </brush>
           </colorrole>
@@ -917,7 +924,7 @@ QLabel {
           </colorrole>
           <colorrole role="Button">
            <brush brushstyle="SolidPattern">
-            <color alpha="255">
+            <color alpha="90">
              <red>136</red>
              <green>194</green>
              <blue>206</blue>
@@ -952,20 +959,20 @@ QLabel {
            </brush>
           </colorrole>
           <colorrole role="Base">
-           <brush brushstyle="SolidPattern">
+           <brush brushstyle="NoBrush">
             <color alpha="255">
-             <red>244</red>
-             <green>249</green>
-             <blue>252</blue>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
             </color>
            </brush>
           </colorrole>
           <colorrole role="Window">
            <brush brushstyle="SolidPattern">
-            <color alpha="255">
-             <red>244</red>
-             <green>249</green>
-             <blue>252</blue>
+            <color alpha="90">
+             <red>136</red>
+             <green>194</green>
+             <blue>206</blue>
             </color>
            </brush>
           </colorrole>
@@ -1090,7 +1097,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ω&lt;span style=&quot; vertical-align:sub;&quot;&gt;0&lt;/span&gt; – собственная частота колебаний осциллятора; &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;y – коэффициент трения.&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Также данные можно загрузить в виде excel-файла с помощью кнопки &amp;quot;ЗАГРУЗИТЬ&amp;quot;. Данные в excel-файле должны находится в столбик в последовательности как переменные в области ввода данных без побочных символов и знаков.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Также данные можно загрузить в виде excel-файла с помощью кнопки &amp;quot;ЗАГРУЗИТЬ&amp;quot;. Для считывания в файле должны содержаться столбцы с именами переменных, а в следующей ячейке столбца - значение переменной.&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;При нажатии кнопки &amp;quot;СГЕНЕРИРОВАТЬ&amp;quot; на экране появится график по задданым начальным условиям. Всего генерируется 3 типа графика (1 тип - график зависимости x, v, t; 2 тип - график зависимости x, t; график зависимости v, t), переключение между ними производятся с помощью стрелок &amp;quot;&amp;lt;&amp;quot; и &amp;quot;&amp;gt;&amp;quot;.&lt;br /&gt;&lt;br /&gt;Выбранный график можно распечатать с помощью кнопки &amp;quot;ПЕЧАТЬ&amp;quot; или сформировать excel-файл с таблицей при нажатии на кнопку &amp;quot;EXCEL&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>

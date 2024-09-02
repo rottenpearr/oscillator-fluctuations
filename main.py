@@ -68,6 +68,7 @@ class MainWindow(QMainWindow):
         # Создание счётчика графиков для перелистывания
         self.graph_counter = 0
         self.graph_paths = []
+        self.excel_paths = []
 
     def open_info_window(self):
         if self.info_window is None:
@@ -83,12 +84,12 @@ class MainWindow(QMainWindow):
         else:
             self.ui.button_reset.setEnabled(False)
 
-    def error_incorrect_input_message(self, message):
+    def error_incorrect_input_message(self, title, message):
         error_dialog = QMessageBox()
         icon = QPixmap(Path("images/error.svg"))
         error_dialog.setWindowIcon(icon)
         error_dialog.setIcon(QMessageBox.Critical)
-        error_dialog.setWindowTitle("Ошибка ввода данных")
+        error_dialog.setWindowTitle(title)
         error_dialog.setText(message)
         error_dialog.setStandardButtons(QMessageBox.Ok)
         error_dialog.exec()
@@ -107,14 +108,18 @@ class MainWindow(QMainWindow):
 
             # Проверка введенных данных на корректность
             if t0 >= tk or dt1 <= 0 or dt2 <= 0 or dt1 < dt2 or y < 0 or w0 < 0:
-                self.error_incorrect_input_message("Убедитесь, что введённые данные соответствуют следующим условиям: "
+                self.error_incorrect_input_message("Ошибка ввода данных",
+                                                   "Убедитесь, что введённые данные соответствуют"
+                                                   " следующим условиям: "
                                                    "t0 < tk; "
                                                    "dt1 > 0; dt2 > 0; dt1 >= dt2; "
-                                                   "γ >= 0; ω0 >= 0.", )
+                                                   "γ >= 0; ω0 >= 0.")
                 return
 
         except ValueError:
-            self.error_incorrect_input_message("Убедитесь, что все поля заполнены корректно (введены только цифры"
+            self.error_incorrect_input_message("Ошибка ввода данных",
+                                               "Убедитесь, что все поля заполнены корректно "
+                                               "(введены только цифры"
                                                " и цифры через запятую или точку).")
             return
 
@@ -146,10 +151,11 @@ class MainWindow(QMainWindow):
                     t[index] = t0 + dt1 * i
                 else:
                     t[index] = t[index - 1] + dt2
+
                 if t[index] > tk:
                     t[index] = tk
                 v[index] = v[index - 1] + (-w0 ** 2 * x[index - 1] - y * v[index - 1]) * dt2
-                x[index] = x[index - 1] + v[index] * dt2
+                x[index] = x[index - 1] + v[index - 1] * dt2
 
                 if t[index] == tk:
                     break
@@ -179,19 +185,20 @@ class MainWindow(QMainWindow):
         if not os.path.exists("graph"):
             os.makedirs("graph")
 
+        # Создание графика xvt
         fig1, ax1 = plt.subplots(figsize=(10, 6))
         fig1.patch.set_facecolor((1, 1, 1, 0))  # Устанавливаем прозрачный фон для холста
 
         # Построение графика x(t) - синяя линия
-        ax1.plot(t, x, label='x(t) - Положение', color='blue')
+        ax1.plot(t, x, label="x(t) - Положение", color="blue")
 
-        # Построение графика v(t) - голубая линия
-        ax1.plot(t, v, label='v(t) - Скорость', color='cyan')
+        # Построение графика v(t) - розовая линия
+        ax1.plot(t, v, label="v(t) - Скорость", color="pink")
 
         # Установка заголовка и меток осей
-        ax1.set_title('Колебания линейного гармонического осциллятора с учётом трения')
-        ax1.set_xlabel('t - Время')
-        ax1.set_ylabel('x - Положение; v - Скорость')
+        ax1.set_title("Колебания линейного гармонического осциллятора с учётом трения")
+        ax1.set_xlabel("t - Время")
+        ax1.set_ylabel("x - Положение; v - Скорость")
 
         # Включение сетки и легенды
         ax1.grid(True)
@@ -203,17 +210,20 @@ class MainWindow(QMainWindow):
 
         # Создание Excel-файла для графика xvt
         excel_file_path_1 = Path("graph/oscillator_data_xvt.xlsx")
-        data = {'t': t, 'x': x, 'v': v}
+        data = {"t": t, "x": x, "v": v}
         df = pd.DataFrame(data)
         df.to_excel(excel_file_path_1, index=False)
 
         # Создание графика xt
         fig2, ax2 = plt.subplots(figsize=(10, 6))
         fig2.patch.set_facecolor((1, 1, 1, 0))  # Устанавливаем прозрачный фон для холста
-        ax2.plot(t, x, label='x(t)')
-        ax2.set_title('Колебания линейного гармонического осциллятора с учётом трения')
-        ax2.set_xlabel('t - Время')
-        ax2.set_ylabel('x - Положение')
+
+        # Построение графика x(t) - синяя линия
+        ax2.plot(t, x, label="x(t) - Положение", color="blue")
+
+        ax2.set_title("Колебания линейного гармонического осциллятора с учётом трения")
+        ax2.set_xlabel("t - Время")
+        ax2.set_ylabel("x - Положение")
         ax2.grid(True)
         ax2.legend()
 
@@ -223,17 +233,20 @@ class MainWindow(QMainWindow):
 
         # Создание Excel-файла
         excel_file_path_2 = Path("graph/oscillator_data_xt.xlsx")
-        data = {'t': t, 'x': x}
+        data = {"t": t, "x": x}
         df = pd.DataFrame(data)
         df.to_excel(excel_file_path_2, index=False)
 
         # Создание графика vt
         fig3, ax3 = plt.subplots(figsize=(10, 6))
         fig3.patch.set_facecolor((1, 1, 1, 0))  # Устанавливаем прозрачный фон для холста
-        ax3.plot(t, v, label='v(t)')
-        ax3.set_title('Колебания линейного гармонического осциллятора с учётом трения')
-        ax3.set_xlabel('t - Время')
-        ax3.set_ylabel('v - Скорость')
+
+        # Построение графика v(t) - розовая линия
+        ax3.plot(t, v, label="v(t) - Скорость", color="pink")
+
+        ax3.set_title("Колебания линейного гармонического осциллятора с учётом трения")
+        ax3.set_xlabel("t - Время")
+        ax3.set_ylabel("v - Скорость")
         ax3.grid(True)
         ax3.legend()
 
@@ -243,12 +256,13 @@ class MainWindow(QMainWindow):
 
         # Создание Excel-файла для графика xvt
         excel_file_path_3 = Path("graph/oscillator_data_vt.xlsx")
-        data = {'t': t, 'v': v}
+        data = {"t": t, "v": v}
         df = pd.DataFrame(data)
         df.to_excel(excel_file_path_3, index=False)
 
-        # Сохранение путей к графикам в список
+        # Сохранение путей к графикам и файлам в список
         self.graph_paths = [graph_path_1, graph_path_2, graph_path_3]
+        self.excel_paths = [excel_file_path_1, excel_file_path_2, excel_file_path_3]
 
         # Установка начального изображения
         self.graph_counter = 0
@@ -294,7 +308,7 @@ class MainWindow(QMainWindow):
             self.ui.pushButton_2.setEnabled(True)
 
     def update_graph(self):
-        # Загрузка текущего графика и его отображение
+        # Обновляем QPixmap текущего графика и отображаем его
         self.pixmap = QPixmap(self.graph_paths[self.graph_counter])
 
         # Масштабируем изображение, сохраняя пропорции
@@ -365,12 +379,12 @@ class MainWindow(QMainWindow):
                 painter.end()
 
     def open_excel(self):
-        excel_file_path = Path("graph/oscillator_data.xlsx")
-
+        # Открытие Excel файла, связанного с текущим графиком
+        excel_file_path = self.excel_paths[self.graph_counter]
         if os.path.exists(excel_file_path):
             os.startfile(excel_file_path)
         else:
-            self.open_error_window()  # Если файл не найден, показать окно с ошибкой
+            self.error_incorrect_input_message("Ошибка при открытии файла", "Файл не найден в директории.")
 
     def upload_excel(self):
         # Открытие проводника для выбора Excel-файла
@@ -387,20 +401,21 @@ class MainWindow(QMainWindow):
                 # 't0', 'tk', 'dt1', 'dt2', 'x0', 'v0', 'w0', 'y'
 
                 # Заполнение полей ввода данными из Excel
-                self.ui.entry_t0.setText(str(df['t0'].iloc[0]))
-                self.ui.entry_tk.setText(str(df['tk'].iloc[0]))
-                self.ui.entry_dt1.setText(str(df['dt1'].iloc[0]))
-                self.ui.entry_dt2.setText(str(df['dt2'].iloc[0]))
-                self.ui.entry_x0.setText(str(df['x0'].iloc[0]))
-                self.ui.entry_v0.setText(str(df['v0'].iloc[0]))
-                self.ui.entry_w0.setText(str(df['w0'].iloc[0]))
-                self.ui.entry_y.setText(str(df['y'].iloc[0]))
+                self.ui.entry_t0.setText(str(df["t0"].iloc[0]))
+                self.ui.entry_tk.setText(str(df["tk"].iloc[0]))
+                self.ui.entry_dt1.setText(str(df["dt1"].iloc[0]))
+                self.ui.entry_dt2.setText(str(df["dt2"].iloc[0]))
+                self.ui.entry_x0.setText(str(df["x0"].iloc[0]))
+                self.ui.entry_v0.setText(str(df["v0"].iloc[0]))
+                self.ui.entry_w0.setText(str(df["w0"].iloc[0]))
+                self.ui.entry_y.setText(str(df["y"].iloc[0]))
 
                 # Проверка полей ввода и активация кнопки сброса
                 self.check_input_fields()
 
             except Exception as e:
-                self.error_incorrect_input_message(f"Ошибка при чтении файла: {str(e)}")
+                self.error_incorrect_input_message("Ошибка при чтении файла", f"Проверьте корректность "
+                                                                              f"формата ввода данных в файле.")
 
 
 if __name__ == "__main__":
