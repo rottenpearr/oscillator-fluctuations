@@ -3,7 +3,6 @@ import os
 from math import ceil
 
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog, QMessageBox, QFileDialog
@@ -59,7 +58,8 @@ class MainWindow(QMainWindow):
         self.ui.entry_dt2.textChanged.connect(self.check_input_fields)
         self.ui.entry_x0.textChanged.connect(self.check_input_fields)
         self.ui.entry_v0.textChanged.connect(self.check_input_fields)
-        self.ui.entry_w0.textChanged.connect(self.check_input_fields)
+        self.ui.entry_k.textChanged.connect(self.check_input_fields)
+        self.ui.entry_m.textChanged.connect(self.check_input_fields)
         self.ui.entry_y.textChanged.connect(self.check_input_fields)
 
         self.info_window = None
@@ -78,8 +78,8 @@ class MainWindow(QMainWindow):
     def check_input_fields(self):
         # Если хотя бы одно поле ввода не пустое, активируем кнопку
         if (self.ui.entry_t0.text() or self.ui.entry_tk.text() or self.ui.entry_dt1.text() or self.ui.entry_dt2.text()
-                or self.ui.entry_x0.text() or self.ui.entry_v0.text() or self.ui.entry_w0.text()
-                or self.ui.entry_y.text()):
+                or self.ui.entry_x0.text() or self.ui.entry_v0.text() or self.ui.entry_k.text()
+                or self.ui.entry_m.text() or self.ui.entry_y.text()):
             self.ui.button_reset.setEnabled(True)
         else:
             self.ui.button_reset.setEnabled(False)
@@ -99,15 +99,16 @@ class MainWindow(QMainWindow):
             # Получение данных из полей ввода
             t0 = float(self.ui.entry_t0.text().replace(',', '.'))  # начальный момент времени
             tk = float(self.ui.entry_tk.text().replace(',', '.'))  # конечный момент времени
-            dt1 = float(self.ui.entry_dt1.text().replace(',', '.'))  # период расчетов (вывод значений)
-            dt2 = float(self.ui.entry_dt2.text().replace(',', '.'))  # параметр дискретизации
             x0 = float(self.ui.entry_x0.text().replace(',', '.'))  # начальное положение груза
             v0 = float(self.ui.entry_v0.text().replace(',', '.'))  # начальная скорость
-            w0 = float(self.ui.entry_w0.text().replace(',', '.'))  # собственная частота колебаний осциллятора
+            m = float(self.ui.entry_m.text().replace(',', '.'))  # масса груза
+            k = float(self.ui.entry_k.text().replace(',', '.'))  # коэффициент жесткости
             y = float(self.ui.entry_y.text().replace(',', '.'))  # коэффициент трения
+            dt1 = float(self.ui.entry_dt1.text().replace(',', '.'))  # период расчетов (вывод значений)
+            dt2 = float(self.ui.entry_dt2.text().replace(',', '.'))  # параметр дискретизации
 
             # Проверка введенных данных на корректность
-            if t0 >= tk or dt1 <= 0 or dt2 <= 0 or dt1 < dt2 or y < 0 or w0 < 0:
+            if t0 >= tk or dt1 <= 0 or dt2 <= 0 or dt1 < dt2 or y < 0 or m < 0 or k < 0:
                 self.error_incorrect_input_message("Ошибка ввода данных",
                                                    "Убедитесь, что введённые данные соответствуют"
                                                    " следующим условиям: "
@@ -133,16 +134,15 @@ class MainWindow(QMainWindow):
         x = list(False for _ in range(0, N * M + 2, 1))
         v = list(False for _ in range(0, N * M + 2, 1))
 
+        # Энергия (если гамма = 0)
+        e = list(False for _ in range(0, N * M + 2, 1))
+
         # Начальные условия
         x[0] = x0
         v[0] = v0
         t[0] = t0
 
         index = 1
-
-        # for i in range(1, N):
-        #     v[i] = v[i - 1] + (-w0 ** 2 * x[i - 1] - y * v[i - 1]) * dt2
-        #     x[i] = x[i - 1] + v[i] * dt2
 
         # Численное решение уравнения методом Эйлера
         for i in range(1, N + 1):
@@ -154,32 +154,43 @@ class MainWindow(QMainWindow):
 
                 if t[index] > tk:
                     t[index] = tk
-                v[index] = v[index - 1] + (-w0 ** 2 * x[index - 1] - y * v[index - 1]) * dt2
-                x[index] = x[index - 1] + v[index - 1] * dt2
+                v[index] = v[index - 1] + (-(k / m) * x[index - 1] - y * v[index - 1]) * dt2
+                x[index] = x[index - 1] + v[index - 1] * dt2  # -1 / 0 мяу
+
+                e[index] = (m * v[index] ** 2 + m * -(k / m) * x[index] ** 2) / 2
 
                 if t[index] == tk:
                     break
 
                 index += 1
 
-        if tk not in t:  # ТУТ ИЛИ НИЖЕ ОШИБКА
+        if tk not in t:
             while t[-1] is False:
                 del t[-1]
                 del v[-1]
                 del x[-1]
             t.append(tk)
-            v.append(v[-1] + (-w0 ** 2 * x[-1] - y * v[-1]) * dt2)
+            v.append(v[-1] + (-(k / m) ** 2 * x[-1] - y * v[-1]) * dt2)
             x.append(x[-1] + v[-1] * dt2)
-        else:  # ДВАЖДЫ tk
-            flag = True
+        else:
             count = t.count(tk)
-            while t[-1] != tk or flag:
-                if t[-1] == tk:
-                    count -= 1
+            if count == 1:
+                while t[-1] != tk:
+                    del t[-1]
+                    del v[-1]
+                    del x[-1]
+            else:
+                flag = True
+                while flag:
+                    if t[-1] == tk:
+                        count -= 1
 
-                del t[-1]
-                del v[-1]
-                del x[-1]
+                    del t[-1]
+                    del v[-1]
+                    del x[-1]
+
+                    if count == 1:
+                        flag = False
 
         # Проверка, существует ли директория "graph"
         if not os.path.exists("graph"):
@@ -210,7 +221,10 @@ class MainWindow(QMainWindow):
 
         # Создание Excel-файла для графика xvt
         excel_file_path_1 = Path("graph/oscillator_data_xvt.xlsx")
-        data = {"t": t, "x": x, "v": v}
+        if y == 0:
+            data = {"t": t, "x": x, "v": v, "Энергия": e}
+        else:
+            data = {"t": t, "x": x, "v": v}
         df = pd.DataFrame(data)
         df.to_excel(excel_file_path_1, index=False)
 
@@ -326,7 +340,8 @@ class MainWindow(QMainWindow):
         self.ui.entry_dt2.clear()
         self.ui.entry_x0.clear()
         self.ui.entry_v0.clear()
-        self.ui.entry_w0.clear()
+        self.ui.entry_k.clear()
+        self.ui.entry_m.clear()
         self.ui.entry_y.clear()
         # Очищение лейбла с графиком
         self.ui.label_graph.clear()
@@ -407,7 +422,8 @@ class MainWindow(QMainWindow):
                 self.ui.entry_dt2.setText(str(df["dt2"].iloc[0]))
                 self.ui.entry_x0.setText(str(df["x0"].iloc[0]))
                 self.ui.entry_v0.setText(str(df["v0"].iloc[0]))
-                self.ui.entry_w0.setText(str(df["w0"].iloc[0]))
+                self.ui.entry_m.setText(str(df["m"].iloc[0]))
+                self.ui.entry_k.setText(str(df["k"].iloc[0]))
                 self.ui.entry_y.setText(str(df["y"].iloc[0]))
 
                 # Проверка полей ввода и активация кнопки сброса

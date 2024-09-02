@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QApplication, QGroupBox, QHBoxLayout, QLabel,
     QLayout, QLineEdit, QMainWindow, QPushButton,
     QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
 import resources
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -334,77 +335,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.layout_tk)
 
-        self.layout_dt1 = QHBoxLayout()
-        self.layout_dt1.setObjectName(u"layout_dt1")
-        self.horizontalSpacer_20 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.layout_dt1.addItem(self.horizontalSpacer_20)
-
-        self.label_dt1 = QLabel(self.data_input_groupBox)
-        self.label_dt1.setObjectName(u"label_dt1")
-        self.label_dt1.setMinimumSize(QSize(50, 40))
-        self.label_dt1.setStyleSheet(u"background-color: none;\n"
-"border: none;\n"
-"border-radius: none;")
-        self.label_dt1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.layout_dt1.addWidget(self.label_dt1)
-
-        self.entry_dt1 = QLineEdit(self.data_input_groupBox)
-        self.entry_dt1.setObjectName(u"entry_dt1")
-        self.entry_dt1.setMinimumSize(QSize(0, 30))
-        self.entry_dt1.setStyleSheet(u"background-color: rgba(255, 255, 255, 70);\n"
-"border: 1px solid rgba(255, 255, 255, 80);\n"
-"border-radius: 6px;\n"
-"font-size: 16pt;")
-
-        self.layout_dt1.addWidget(self.entry_dt1)
-
-        self.horizontalSpacer_16 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.layout_dt1.addItem(self.horizontalSpacer_16)
-
-        self.layout_dt1.setStretch(1, 2)
-        self.layout_dt1.setStretch(2, 15)
-
-        self.verticalLayout.addLayout(self.layout_dt1)
-
-        self.layout_dt2 = QHBoxLayout()
-        self.layout_dt2.setObjectName(u"layout_dt2")
-        self.horizontalSpacer_14 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.layout_dt2.addItem(self.horizontalSpacer_14)
-
-        self.label_dt2 = QLabel(self.data_input_groupBox)
-        self.label_dt2.setObjectName(u"label_dt2")
-        self.label_dt2.setMinimumSize(QSize(50, 40))
-        self.label_dt2.setStyleSheet(u"background-color: none;\n"
-"border: none;\n"
-"border-radius: none;")
-        self.label_dt2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.layout_dt2.addWidget(self.label_dt2)
-
-        self.entry_dt2 = QLineEdit(self.data_input_groupBox)
-        self.entry_dt2.setObjectName(u"entry_dt2")
-        self.entry_dt2.setMinimumSize(QSize(0, 30))
-        self.entry_dt2.setStyleSheet(u"background-color: rgba(255, 255, 255, 70);\n"
-"border: 1px solid rgba(255, 255, 255, 80);\n"
-"border-radius: 6px;\n"
-"font-size: 16pt;")
-        self.entry_dt2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-
-        self.layout_dt2.addWidget(self.entry_dt2)
-
-        self.horizontalSpacer_15 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.layout_dt2.addItem(self.horizontalSpacer_15)
-
-        self.layout_dt2.setStretch(1, 2)
-        self.layout_dt2.setStretch(2, 15)
-
-        self.verticalLayout.addLayout(self.layout_dt2)
-
         self.layout_x0 = QHBoxLayout()
         self.layout_x0.setObjectName(u"layout_x0")
         self.horizontalSpacer_12 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
@@ -476,40 +406,74 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.layout_v0)
 
-        self.layout_w0 = QHBoxLayout()
-        self.layout_w0.setObjectName(u"layout_w0")
+        self.layout_m = QHBoxLayout()
+        self.layout_m.setObjectName(u"layout_m")
         self.horizontalSpacer_6 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.layout_w0.addItem(self.horizontalSpacer_6)
+        self.layout_m.addItem(self.horizontalSpacer_6)
 
-        self.label_w0 = QLabel(self.data_input_groupBox)
-        self.label_w0.setObjectName(u"label_w0")
-        self.label_w0.setMinimumSize(QSize(50, 40))
-        self.label_w0.setStyleSheet(u"background-color: none;\n"
+        self.label_m = QLabel(self.data_input_groupBox)
+        self.label_m.setObjectName(u"label_m")
+        self.label_m.setMinimumSize(QSize(50, 40))
+        self.label_m.setStyleSheet(u"background-color: none;\n"
 "border: none;\n"
 "border-radius: none;")
-        self.label_w0.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.label_m.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
-        self.layout_w0.addWidget(self.label_w0)
+        self.layout_m.addWidget(self.label_m)
 
-        self.entry_w0 = QLineEdit(self.data_input_groupBox)
-        self.entry_w0.setObjectName(u"entry_w0")
-        self.entry_w0.setMinimumSize(QSize(0, 30))
-        self.entry_w0.setStyleSheet(u"background-color: rgba(255, 255, 255, 70);\n"
+        self.entry_m = QLineEdit(self.data_input_groupBox)
+        self.entry_m.setObjectName(u"entry_m")
+        self.entry_m.setMinimumSize(QSize(0, 30))
+        self.entry_m.setStyleSheet(u"background-color: rgba(255, 255, 255, 70);\n"
 "border: 1px solid rgba(255, 255, 255, 80);\n"
 "border-radius: 6px;\n"
 "font-size: 16pt;")
 
-        self.layout_w0.addWidget(self.entry_w0)
+        self.layout_m.addWidget(self.entry_m)
 
         self.horizontalSpacer_9 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.layout_w0.addItem(self.horizontalSpacer_9)
+        self.layout_m.addItem(self.horizontalSpacer_9)
 
-        self.layout_w0.setStretch(1, 2)
-        self.layout_w0.setStretch(2, 15)
+        self.layout_m.setStretch(1, 2)
+        self.layout_m.setStretch(2, 15)
 
-        self.verticalLayout.addLayout(self.layout_w0)
+        self.verticalLayout.addLayout(self.layout_m)
+
+        self.layout_k = QHBoxLayout()
+        self.layout_k.setObjectName(u"layout_k")
+        self.horizontalSpacer_33 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.layout_k.addItem(self.horizontalSpacer_33)
+
+        self.label_k = QLabel(self.data_input_groupBox)
+        self.label_k.setObjectName(u"label_k")
+        self.label_k.setMinimumSize(QSize(50, 40))
+        self.label_k.setStyleSheet(u"background-color: none;\n"
+"border: none;\n"
+"border-radius: none;")
+
+        self.layout_k.addWidget(self.label_k)
+
+        self.entry_k = QLineEdit(self.data_input_groupBox)
+        self.entry_k.setObjectName(u"entry_k")
+        self.entry_k.setMinimumSize(QSize(0, 30))
+        self.entry_k.setStyleSheet(u"background-color: rgba(255, 255, 255, 70);\n"
+"border: 1px solid rgba(255, 255, 255, 80);\n"
+"border-radius: 6px;\n"
+"font-size: 16pt;")
+
+        self.layout_k.addWidget(self.entry_k)
+
+        self.horizontalSpacer_34 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.layout_k.addItem(self.horizontalSpacer_34)
+
+        self.layout_k.setStretch(1, 2)
+        self.layout_k.setStretch(2, 15)
+
+        self.verticalLayout.addLayout(self.layout_k)
 
         self.layout_y = QHBoxLayout()
         self.layout_y.setObjectName(u"layout_y")
@@ -545,6 +509,77 @@ class Ui_MainWindow(object):
         self.layout_y.setStretch(2, 15)
 
         self.verticalLayout.addLayout(self.layout_y)
+
+        self.layout_dt1 = QHBoxLayout()
+        self.layout_dt1.setObjectName(u"layout_dt1")
+        self.horizontalSpacer_20 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.layout_dt1.addItem(self.horizontalSpacer_20)
+
+        self.label_dt1 = QLabel(self.data_input_groupBox)
+        self.label_dt1.setObjectName(u"label_dt1")
+        self.label_dt1.setMinimumSize(QSize(50, 40))
+        self.label_dt1.setStyleSheet(u"background-color: none;\n"
+"border: none;\n"
+"border-radius: none;")
+        self.label_dt1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.layout_dt1.addWidget(self.label_dt1)
+
+        self.entry_dt1 = QLineEdit(self.data_input_groupBox)
+        self.entry_dt1.setObjectName(u"entry_dt1")
+        self.entry_dt1.setMinimumSize(QSize(0, 30))
+        self.entry_dt1.setStyleSheet(u"background-color: rgba(255, 255, 255, 70);\n"
+"border: 1px solid rgba(255, 255, 255, 80);\n"
+"border-radius: 6px;\n"
+"font-size: 16pt;")
+
+        self.layout_dt1.addWidget(self.entry_dt1)
+
+        self.horizontalSpacer_16 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.layout_dt1.addItem(self.horizontalSpacer_16)
+
+        self.layout_dt1.setStretch(1, 2)
+        self.layout_dt1.setStretch(2, 15)
+
+        self.verticalLayout.addLayout(self.layout_dt1)
+
+        self.layout_dt2 = QHBoxLayout()
+        self.layout_dt2.setObjectName(u"layout_dt2")
+        self.horizontalSpacer_14 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.layout_dt2.addItem(self.horizontalSpacer_14)
+
+        self.label_dt2 = QLabel(self.data_input_groupBox)
+        self.label_dt2.setObjectName(u"label_dt2")
+        self.label_dt2.setMinimumSize(QSize(50, 40))
+        self.label_dt2.setStyleSheet(u"background-color: none;\n"
+"border: none;\n"
+"border-radius: none;")
+        self.label_dt2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.layout_dt2.addWidget(self.label_dt2)
+
+        self.entry_dt2 = QLineEdit(self.data_input_groupBox)
+        self.entry_dt2.setObjectName(u"entry_dt2")
+        self.entry_dt2.setMinimumSize(QSize(0, 30))
+        self.entry_dt2.setStyleSheet(u"background-color: rgba(255, 255, 255, 70);\n"
+"border: 1px solid rgba(255, 255, 255, 80);\n"
+"border-radius: 6px;\n"
+"font-size: 16pt;")
+        self.entry_dt2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+
+        self.layout_dt2.addWidget(self.entry_dt2)
+
+        self.horizontalSpacer_15 = QSpacerItem(30, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.layout_dt2.addItem(self.horizontalSpacer_15)
+
+        self.layout_dt2.setStretch(1, 2)
+        self.layout_dt2.setStretch(2, 15)
+
+        self.verticalLayout.addLayout(self.layout_dt2)
 
         self.horizontalSpacer_32 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
@@ -648,13 +683,11 @@ class Ui_MainWindow(object):
         self.verticalLayout.setStretch(5, 2)
         self.verticalLayout.setStretch(6, 2)
         self.verticalLayout.setStretch(7, 2)
-        self.verticalLayout.setStretch(8, 2)
         self.verticalLayout.setStretch(9, 2)
-        self.verticalLayout.setStretch(10, 2)
-        self.verticalLayout.setStretch(11, 1)
-        self.verticalLayout.setStretch(12, 2)
-        self.verticalLayout.setStretch(14, 2)
-        self.verticalLayout.setStretch(15, 1)
+        self.verticalLayout.setStretch(12, 1)
+        self.verticalLayout.setStretch(13, 2)
+        self.verticalLayout.setStretch(15, 2)
+        self.verticalLayout.setStretch(16, 1)
 
         self.horizontalLayout_9.addWidget(self.data_input_groupBox)
 
@@ -857,12 +890,13 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">\u0412\u0432\u043e\u0434 \u0434\u0430\u043d\u043d\u044b\u0445</span></p></body></html>", None))
         self.label_t0.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">t</span><span style=\" font-size:22pt; vertical-align:sub;\">0</span></p></body></html>", None))
         self.label_tk.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">t</span><span style=\" font-size:22pt; vertical-align:sub;\">k</span></p></body></html>", None))
-        self.label_dt1.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">dt</span><span style=\" font-size:22pt; vertical-align:sub;\">1</span></p></body></html>", None))
-        self.label_dt2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">dt</span><span style=\" font-size:22pt; vertical-align:sub;\">2</span></p></body></html>", None))
         self.label_x0.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">x</span><span style=\" font-size:22pt; vertical-align:sub;\">0</span></p></body></html>", None))
         self.label_v0.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">v</span><span style=\" font-size:22pt; vertical-align:sub;\">0</span></p></body></html>", None))
-        self.label_w0.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">\u03c9</span><span style=\" font-size:22pt; vertical-align:sub;\">0</span></p></body></html>", None))
+        self.label_m.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">m</span></p></body></html>", None))
+        self.label_k.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">k</span></p></body></html>", None))
         self.label_y.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">y</span></p></body></html>", None))
+        self.label_dt1.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">dt</span><span style=\" font-size:22pt; vertical-align:sub;\">1</span></p></body></html>", None))
+        self.label_dt2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt;\">dt</span><span style=\" font-size:22pt; vertical-align:sub;\">2</span></p></body></html>", None))
         self.button_upload.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0410\u0413\u0420\u0423\u0417\u0418\u0422\u042c", None))
         self.button_info.setText(QCoreApplication.translate("MainWindow", u"\u0418\u041d\u0424\u041e", None))
         self.label_graph.setText("")

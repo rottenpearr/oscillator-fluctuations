@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>oscillator_graph_vt.png</file>
     <file>back.svg</file>
     <file>forward.svg</file>
     <file>upload.svg</file>
