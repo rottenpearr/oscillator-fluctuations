@@ -1,6 +1,13 @@
 import sys
 import os
-from math import ceil
+
+from pathlib import Path
+
+from math import ceil, isclose
+
+from openpyxl import load_workbook
+from openpyxl.styles import Border, Side, Font
+from openpyxl.utils import get_column_letter
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -12,8 +19,6 @@ from PySide6.QtCore import Qt
 
 from MainWindow_ui import Ui_MainWindow
 from InfoWindow_ui import Ui_info_win
-
-from pathlib import Path
 
 
 class InfoWindow(QDialog):
@@ -70,6 +75,13 @@ class MainWindow(QMainWindow):
         self.graph_paths = []
         self.excel_paths = []
 
+    def resizeEvent(self, event):
+        try:
+            self.update_graph()
+        except:
+            pass
+        super().resizeEvent(event)  # Обязательно вызываем метод родителя
+
     def open_info_window(self):
         if self.info_window is None:
             self.info_window = InfoWindow()
@@ -114,7 +126,7 @@ class MainWindow(QMainWindow):
                                                    " следующим условиям: "
                                                    "t0 < tk; "
                                                    "dt1 > 0; dt2 > 0; dt1 >= dt2; "
-                                                   "γ >= 0; ω0 >= 0.")
+                                                   "γ >= 0; m > 0; k > 0.")
                 return
 
         except ValueError:
@@ -142,11 +154,13 @@ class MainWindow(QMainWindow):
         v[0] = v0
         t[0] = t0
 
+        e[0] = (m * v[0] ** 2 + k * x[0] ** 2) / 2
+
         index = 1
 
         # Численное решение уравнения методом Эйлера
         for i in range(1, N + 1):
-            for k in range(1, M + 1):
+            for j in range(1, M + 1):
                 if t[index - 1] + dt2 > t0 + dt1 * i:
                     t[index] = t0 + dt1 * i
                 else:
@@ -154,11 +168,11 @@ class MainWindow(QMainWindow):
 
                 if t[index] > tk:
                     t[index] = tk
-                v[index] = v[index - 1] + (-(k / m) * x[index - 1] - y * v[index - 1]) * dt2
-                x[index] = x[index - 1] + v[index - 1] * dt2  # -1 / 0 мяу
+                v[index] = v[index - 1] + (-(k / m if m > 0 else 0) * x[index - 1] - y * v[index - 1]) * dt2
+                x[index] = x[index - 1] + v[index] * dt2
 
-                e[index] = (m * v[index] ** 2 + m * -(k / m) * x[index] ** 2) / 2
-
+                if isclose(t[index], t0 + dt1 * i, rel_tol=0.001):
+                    e[index] = (m * v[index] ** 2 + k * x[index] ** 2) / 2
                 if t[index] == tk:
                     break
 
@@ -169,9 +183,11 @@ class MainWindow(QMainWindow):
                 del t[-1]
                 del v[-1]
                 del x[-1]
+                del e[-1]
             t.append(tk)
-            v.append(v[-1] + (-(k / m) ** 2 * x[-1] - y * v[-1]) * dt2)
+            v.append(v[-1] + (-(k / m if m > 0 else 0) ** 2 * x[-1] - y * v[-1]) * dt2)
             x.append(x[-1] + v[-1] * dt2)
+            e.append((m * v[-1] ** 2 + k * x[-1] ** 2) / 2)
         else:
             count = t.count(tk)
             if count == 1:
@@ -179,6 +195,7 @@ class MainWindow(QMainWindow):
                     del t[-1]
                     del v[-1]
                     del x[-1]
+                    del e[-1]
             else:
                 flag = True
                 while flag:
@@ -188,6 +205,7 @@ class MainWindow(QMainWindow):
                     del t[-1]
                     del v[-1]
                     del x[-1]
+                    del e[-1]
 
                     if count == 1:
                         flag = False
@@ -218,15 +236,65 @@ class MainWindow(QMainWindow):
         # Сохранение графика xvt в файл с прозрачным фоном
         graph_path_1 = Path("graph/oscillator_graph_xvt.png")
         plt.savefig(graph_path_1, transparent=True)
+        plt.close()
 
         # Создание Excel-файла для графика xvt
         excel_file_path_1 = Path("graph/oscillator_data_xvt.xlsx")
         if y == 0:
-            data = {"t": t, "x": x, "v": v, "Энергия": e}
+            data = {"Время t": t, "Положение x": x, "Скорость v": v,
+                    "Полная энергия Ei": [info if info else -2 for info in e]}
         else:
-            data = {"t": t, "x": x, "v": v}
+            data = {"Время t": t, "Положение x": x, "Скорость v": v}
         df = pd.DataFrame(data)
         df.to_excel(excel_file_path_1, index=False)
+
+        # Добавление колонок для проверки сохранения полной энергии только если y == 0
+        if y == 0:
+            wb = load_workbook(excel_file_path_1)
+            ws = wb.active
+            last_row = ws.max_row
+
+            # Очистка значений в колонке "Полная энергия Ei", если индекс не кратен M
+            for cell in range(2, last_row + 1):
+                if (cell - 2) % M != 0:
+                    ws[f"D{cell}"].value = ""
+
+            # Добавление заголовков и формул для расчета энергии и погрешностей
+            ws[f'E1'] = "Среднее значение полной энергии Esr"
+            ws[f'E2'] = f"=AVERAGE(D2:D{last_row})"
+            ws[f'F1'] = "Относительная погрешность по энергии di"
+            for row in range(2, last_row + 1):
+                if (row - 2) % M == 0:
+                    ws[f'F{row}'] = f"=ABS($E$2 - $D{row}) / ABS($E$2)"
+            ws[f'G1'] = "Среднеквадратичная относительная погрешность dsr"
+            ws[f'G2'] = f"=SQRT(1 / {N} * SUMPRODUCT(($F$2:$F${last_row})^2))"
+
+            # Установка полужирного шрифта для заголовков
+            for col in ['E1', 'F1', 'G1']:
+                ws[col].font = Font(bold=True)
+
+            # Определение тонкой границы
+            thin_border = Border(
+                left=Side(style='thin'),
+                right=Side(style='thin'),
+                top=Side(style='thin'),
+                bottom=Side(style='thin')
+            )
+
+            # Применение тонкой границы к заголовкам
+            for col in ['E1', 'F1', 'G1']:
+                ws[col].border = thin_border
+
+            # Автоматическая подстройка ширины столбцов
+            for column_cells in ws.columns:
+                max_length = max(len(str(cell.value)) for cell in column_cells)
+                adjusted_width = max_length + 2
+                column_letter = get_column_letter(column_cells[0].column)
+                ws.column_dimensions[column_letter].width = adjusted_width
+
+            wb.save(excel_file_path_1)
+            wb.close()
+
 
         # Создание графика xt
         fig2, ax2 = plt.subplots(figsize=(10, 6))
@@ -244,10 +312,11 @@ class MainWindow(QMainWindow):
         # Сохранение графика xt в файл с прозрачным фоном
         graph_path_2 = Path("graph/oscillator_graph_xt.png")
         plt.savefig(graph_path_2, transparent=True)
+        plt.close()
 
         # Создание Excel-файла
         excel_file_path_2 = Path("graph/oscillator_data_xt.xlsx")
-        data = {"t": t, "x": x}
+        data = {"Время t": t, "Положение x": x}
         df = pd.DataFrame(data)
         df.to_excel(excel_file_path_2, index=False)
 
@@ -267,10 +336,11 @@ class MainWindow(QMainWindow):
         # Сохранение графика vt в файл с прозрачным фоном
         graph_path_3 = Path("graph/oscillator_graph_vt.png")
         plt.savefig(graph_path_3, transparent=True)
+        plt.close()
 
         # Создание Excel-файла для графика xvt
         excel_file_path_3 = Path("graph/oscillator_data_vt.xlsx")
-        data = {"t": t, "v": v}
+        data = {"Время t": t, "Скорость v": v}
         df = pd.DataFrame(data)
         df.to_excel(excel_file_path_3, index=False)
 
@@ -287,11 +357,10 @@ class MainWindow(QMainWindow):
         self.ui.pushButton.setEnabled(False)
         self.ui.pushButton_2.setHidden(False)
 
-        # Блокировка кнопки "Сгенерировать", разблокировка кнопок "Сброс", "Печать", "Excel"
+        # Разблокировка кнопок "Сброс", "Печать", "Excel"
         self.ui.button_reset.setEnabled(True)
         self.ui.button_print.setEnabled(True)
         self.ui.button_excel.setEnabled(True)
-        self.ui.button_start.setEnabled(False)
 
     def show_next_graph(self):
         # Переключение на следующий график
@@ -325,9 +394,10 @@ class MainWindow(QMainWindow):
         # Обновляем QPixmap текущего графика и отображаем его
         self.pixmap = QPixmap(self.graph_paths[self.graph_counter])
 
+        graph_size = self.ui.label_graph.size()
+
         # Масштабируем изображение, сохраняя пропорции
-        scaled_pixmap = self.pixmap.scaled(self.ui.label_graph.width(), self.ui.label_graph.height(),
-                                           Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        scaled_pixmap = self.pixmap.scaled(graph_size, Qt.KeepAspectRatio, Qt.SmoothTransformation)
 
         # Устанавливаем масштабированное изображение в QLabel
         self.ui.label_graph.setPixmap(scaled_pixmap)
