@@ -250,6 +250,7 @@ class MainWindow(QMainWindow):
             header_preset(ws, columns)
             filler1 = PatternFill(start_color='FFCBDB', end_color='FFCBDB', fill_type='solid')
             filler2 = PatternFill(start_color='FFC8A8', end_color='FFC8A8', fill_type='solid')
+            filler3 = PatternFill(start_color='BDECB6', end_color='BDECB6', fill_type='solid')
             for row in range(2, last_row + 1):
                 if (row - 2) % M == 0:
                     if file_path == excel_file_path_1 and y == 0:
@@ -257,7 +258,9 @@ class MainWindow(QMainWindow):
                         ws[f'B{row}'].fill = filler1
                         ws[f'C{row}'].fill = filler1
                         ws[f'D{row}'].fill = filler2
+                        ws['E2'].fill = filler3
                         ws[f'F{row}'].fill = filler2
+                        ws['G2'].fill = filler3
                     elif file_path == excel_file_path_1:
                         ws[f'A{row}'].fill = filler1
                         ws[f'B{row}'].fill = filler1
