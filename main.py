@@ -6,7 +6,7 @@ from pathlib import Path
 from math import ceil, isclose
 
 from openpyxl import load_workbook
-from openpyxl.styles import Border, Side, Font
+from openpyxl.styles import Border, Side, Font, PatternFill
 from openpyxl.utils import get_column_letter
 
 import pandas as pd
@@ -80,7 +80,7 @@ class MainWindow(QMainWindow):
             self.update_graph()
         except:
             pass
-        super().resizeEvent(event)  # Обязательно вызываем метод родителя
+        super().resizeEvent(event)
 
     def open_info_window(self):
         if self.info_window is None:
@@ -149,70 +149,121 @@ class MainWindow(QMainWindow):
         # Энергия (если гамма = 0)
         e = list(False for _ in range(0, N * M + 2, 1))
 
-        # Начальные условия
-        x[0] = x0
-        v[0] = v0
-        t[0] = t0
+        try:
+            # Начальные условия
+            x[0] = x0
+            v[0] = v0
+            t[0] = t0
 
-        e[0] = (m * v[0] ** 2 + k * x[0] ** 2) / 2
+            e[0] = (m * v[0] ** 2 + k * x[0] ** 2) / 2
 
-        index = 1
+            index = 1
 
-        # Численное решение уравнения методом Эйлера
-        for i in range(1, N + 1):
-            for j in range(1, M + 1):
-                if t[index - 1] + dt2 > t0 + dt1 * i:
-                    t[index] = t0 + dt1 * i
-                else:
-                    t[index] = t[index - 1] + dt2
+            # Численное решение уравнения методом Эйлера
+            for i in range(1, N + 1):
+                for j in range(1, M + 1):
+                    if t[index - 1] + dt2 > t0 + dt1 * i:
+                        t[index] = t0 + dt1 * i
+                    else:
+                        t[index] = t[index - 1] + dt2
 
-                if t[index] > tk:
-                    t[index] = tk
-                v[index] = v[index - 1] + (-(k / m if m > 0 else 0) * x[index - 1] - y * v[index - 1]) * dt2
-                x[index] = x[index - 1] + v[index] * dt2
+                    if t[index] > tk:
+                        t[index] = tk
+                    v[index] = v[index - 1] + (-(k / m if m > 0 else 0) * x[index - 1] - y * v[index - 1]) * dt2
+                    x[index] = x[index - 1] + v[index] * dt2
 
-                if isclose(t[index], t0 + dt1 * i, rel_tol=0.001):
-                    e[index] = (m * v[index] ** 2 + k * x[index] ** 2) / 2
-                if t[index] == tk:
-                    break
+                    if isclose(t[index], t0 + dt1 * i, rel_tol=0.001):
+                        e[index] = (m * v[index] ** 2 + k * x[index] ** 2) / 2
+                    if t[index] == tk:
+                        break
 
-                index += 1
+                    index += 1
 
-        if tk not in t:
-            while t[-1] is False:
-                del t[-1]
-                del v[-1]
-                del x[-1]
-                del e[-1]
-            t.append(tk)
-            v.append(v[-1] + (-(k / m if m > 0 else 0) ** 2 * x[-1] - y * v[-1]) * dt2)
-            x.append(x[-1] + v[-1] * dt2)
-            e.append((m * v[-1] ** 2 + k * x[-1] ** 2) / 2)
-        else:
-            count = t.count(tk)
-            if count == 1:
-                while t[-1] != tk:
+            if tk not in t:
+                while t[-1] is False:
                     del t[-1]
                     del v[-1]
                     del x[-1]
                     del e[-1]
+                t.append(tk)
+                v.append(v[-1] + (-(k / m if m > 0 else 0) ** 2 * x[-1] - y * v[-1]) * dt2)
+                x.append(x[-1] + v[-1] * dt2)
+                e.append((m * v[-1] ** 2 + k * x[-1] ** 2) / 2)
             else:
-                flag = True
-                while flag:
-                    if t[-1] == tk:
-                        count -= 1
+                count = t.count(tk)
+                if count == 1:
+                    while t[-1] != tk:
+                        del t[-1]
+                        del v[-1]
+                        del x[-1]
+                        del e[-1]
+                else:
+                    flag = True
+                    while flag:
+                        if t[-1] == tk:
+                            count -= 1
 
-                    del t[-1]
-                    del v[-1]
-                    del x[-1]
-                    del e[-1]
+                        del t[-1]
+                        del v[-1]
+                        del x[-1]
+                        del e[-1]
 
-                    if count == 1:
-                        flag = False
+                        if count == 1:
+                            flag = False
+        except Exception:
+            self.error_incorrect_input_message("Ошибка обработки", "Входные параметры приводят"
+                                                                   " к слишком большим числам. Попробуйте изменить параметры.")
+            return
 
         # Проверка, существует ли директория "graph"
         if not os.path.exists("graph"):
             os.makedirs("graph")
+
+        # Пресет для заголовков таблицы
+        def header_preset(ws, columns):
+            thin_border = Border(
+                left=Side(style='thin'),
+                right=Side(style='thin'),
+                top=Side(style='thin'),
+                bottom=Side(style='thin')
+            )
+            # Применение жирного шрифта и тонкой границы к заголовкам
+            for col in columns:
+                ws[col].font = Font(bold=True)
+                ws[col].border = thin_border
+
+            # Автоматическая подстройка ширины столбцов
+            for column_cells in ws.columns:
+                max_length = max(len(str(cell.value)) for cell in column_cells)
+                adjusted_width = max_length + 2
+                column_letter = get_column_letter(column_cells[0].column)
+                ws.column_dimensions[column_letter].width = adjusted_width
+
+        # Функция для создания Excel-файла и применения пресета
+        def create_excel_with_preset(file_path, data, columns, M):
+            df = pd.DataFrame(data)
+            df.to_excel(file_path, index=False)
+            wb = load_workbook(file_path)
+            ws = wb.active
+            last_row = ws.max_row
+            header_preset(ws, columns)
+            filler = PatternFill(start_color='FFCBDB', end_color='FFCBDB', fill_type='solid')
+            for row in range(2, last_row + 1):
+                if (row - 2) % M == 0:
+                    if file_path == excel_file_path_1 and y == 0:
+                        ws[f'A{row}'].fill = filler
+                        ws[f'B{row}'].fill = filler
+                        ws[f'C{row}'].fill = filler
+                        ws[f'D{row}'].fill = filler
+                    elif file_path == excel_file_path_1:
+                        ws[f'A{row}'].fill = filler
+                        ws[f'B{row}'].fill = filler
+                        ws[f'C{row}'].fill = filler
+                    else:
+                        ws[f'A{row}'].fill = filler
+                        ws[f'B{row}'].fill = filler
+            wb.save(file_path)
+            wb.close()
 
         # Создание графика xvt
         fig1, ax1 = plt.subplots(figsize=(10, 6))
@@ -243,12 +294,12 @@ class MainWindow(QMainWindow):
         if y == 0:
             data = {"Время t": t, "Положение x": x, "Скорость v": v,
                     "Полная энергия Ei": [info if info else -2 for info in e]}
+            create_excel_with_preset(excel_file_path_1, data, ["A1", "B1", "C1", "D1"], M)
         else:
             data = {"Время t": t, "Положение x": x, "Скорость v": v}
-        df = pd.DataFrame(data)
-        df.to_excel(excel_file_path_1, index=False)
+            create_excel_with_preset(excel_file_path_1, data, ["A1", "B1", "C1"], M)
 
-        # Добавление колонок для проверки сохранения полной энергии только если y == 0
+        # Дополнительные операции, если y == 0
         if y == 0:
             wb = load_workbook(excel_file_path_1)
             ws = wb.active
@@ -260,41 +311,30 @@ class MainWindow(QMainWindow):
                     ws[f"D{cell}"].value = ""
 
             # Добавление заголовков и формул для расчета энергии и погрешностей
-            ws[f'E1'] = "Среднее значение полной энергии Esr"
-            ws[f'E2'] = f"=AVERAGE(D2:D{last_row})"
-            ws[f'F1'] = "Относительная погрешность по энергии di"
+            ws['E1'] = "Среднее значение полной энергии Esr"
+            ws['E2'] = f"=AVERAGE(D2:D{last_row})"
+            ws['F1'] = "Относительная погрешность по энергии di"
             for row in range(2, last_row + 1):
                 if (row - 2) % M == 0:
                     ws[f'F{row}'] = f"=ABS($E$2 - $D{row}) / ABS($E$2)"
-            ws[f'G1'] = "Среднеквадратичная относительная погрешность dsr"
-            ws[f'G2'] = f"=SQRT(1 / {N} * SUMPRODUCT(($F$2:$F${last_row})^2))"
+            ws['G1'] = "Среднеквадратичная относительная погрешность dsr"
+            ws['G2'] = f"=SQRT(1 / {N} * SUMPRODUCT(($F$2:$F${last_row})^2))"
 
-            # Установка полужирного шрифта для заголовков
-            for col in ['E1', 'F1', 'G1']:
-                ws[col].font = Font(bold=True)
-
-            # Определение тонкой границы
-            thin_border = Border(
-                left=Side(style='thin'),
-                right=Side(style='thin'),
-                top=Side(style='thin'),
-                bottom=Side(style='thin')
-            )
-
-            # Применение тонкой границы к заголовкам
-            for col in ['E1', 'F1', 'G1']:
-                ws[col].border = thin_border
-
-            # Автоматическая подстройка ширины столбцов
-            for column_cells in ws.columns:
-                max_length = max(len(str(cell.value)) for cell in column_cells)
-                adjusted_width = max_length + 2
-                column_letter = get_column_letter(column_cells[0].column)
-                ws.column_dimensions[column_letter].width = adjusted_width
+            # Применение пресета к заголовкам
+            header_preset(ws, ["A1", "B1", "C1", "D1", "E1", "F1", "G1"])
 
             wb.save(excel_file_path_1)
             wb.close()
 
+        # Создание Excel-файла для графика xt
+        excel_file_path_2 = Path("graph/oscillator_data_xt.xlsx")
+        data = {"Время t": t, "Положение x": x}
+        create_excel_with_preset(excel_file_path_2, data, ["A1", "B1"], M)
+
+        # Создание Excel-файла для графика vt
+        excel_file_path_3 = Path("graph/oscillator_data_vt.xlsx")
+        data = {"Время t": t, "Скорость v": v}
+        create_excel_with_preset(excel_file_path_3, data, ["A1", "B1"], M)
 
         # Создание графика xt
         fig2, ax2 = plt.subplots(figsize=(10, 6))
@@ -314,12 +354,6 @@ class MainWindow(QMainWindow):
         plt.savefig(graph_path_2, transparent=True)
         plt.close()
 
-        # Создание Excel-файла
-        excel_file_path_2 = Path("graph/oscillator_data_xt.xlsx")
-        data = {"Время t": t, "Положение x": x}
-        df = pd.DataFrame(data)
-        df.to_excel(excel_file_path_2, index=False)
-
         # Создание графика vt
         fig3, ax3 = plt.subplots(figsize=(10, 6))
         fig3.patch.set_facecolor((1, 1, 1, 0))  # Устанавливаем прозрачный фон для холста
@@ -337,12 +371,6 @@ class MainWindow(QMainWindow):
         graph_path_3 = Path("graph/oscillator_graph_vt.png")
         plt.savefig(graph_path_3, transparent=True)
         plt.close()
-
-        # Создание Excel-файла для графика xvt
-        excel_file_path_3 = Path("graph/oscillator_data_vt.xlsx")
-        data = {"Время t": t, "Скорость v": v}
-        df = pd.DataFrame(data)
-        df.to_excel(excel_file_path_3, index=False)
 
         # Сохранение путей к графикам и файлам в список
         self.graph_paths = [graph_path_1, graph_path_2, graph_path_3]
