@@ -248,21 +248,23 @@ class MainWindow(QMainWindow):
             ws = wb.active
             last_row = ws.max_row
             header_preset(ws, columns)
-            filler = PatternFill(start_color='FFCBDB', end_color='FFCBDB', fill_type='solid')
+            filler1 = PatternFill(start_color='FFCBDB', end_color='FFCBDB', fill_type='solid')
+            filler2 = PatternFill(start_color='FFC8A8', end_color='FFC8A8', fill_type='solid')
             for row in range(2, last_row + 1):
                 if (row - 2) % M == 0:
                     if file_path == excel_file_path_1 and y == 0:
-                        ws[f'A{row}'].fill = filler
-                        ws[f'B{row}'].fill = filler
-                        ws[f'C{row}'].fill = filler
-                        ws[f'D{row}'].fill = filler
+                        ws[f'A{row}'].fill = filler1
+                        ws[f'B{row}'].fill = filler1
+                        ws[f'C{row}'].fill = filler1
+                        ws[f'D{row}'].fill = filler2
+                        ws[f'F{row}'].fill = filler2
                     elif file_path == excel_file_path_1:
-                        ws[f'A{row}'].fill = filler
-                        ws[f'B{row}'].fill = filler
-                        ws[f'C{row}'].fill = filler
+                        ws[f'A{row}'].fill = filler1
+                        ws[f'B{row}'].fill = filler1
+                        ws[f'C{row}'].fill = filler1
                     else:
-                        ws[f'A{row}'].fill = filler
-                        ws[f'B{row}'].fill = filler
+                        ws[f'A{row}'].fill = filler1
+                        ws[f'B{row}'].fill = filler1
             wb.save(file_path)
             wb.close()
 
