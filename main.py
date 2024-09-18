@@ -17,46 +17,49 @@ from PySide6.QtGui import QPixmap, QPainter
 from PySide6.QtPrintSupport import QPrinter, QPrintDialog
 from PySide6.QtCore import Qt
 
-from MainWindow_ui import Ui_MainWindow
-from InfoWindow_ui import Ui_info_win
+from MainWindow_ui import Ui_MainWindow  # Интерфейс главного окна
+from InfoWindow_ui import Ui_info_win  # Интерфейс окна с информацией
 
 
+# Инициализация окна "Инфо"
 class InfoWindow(QDialog):
     def __init__(self):
         super().__init__()
         self.ui = Ui_info_win()
-        self.ui.setupUi(self)
+        self.ui.setupUi(self)  # Инициализация интерфейса окна "Инфо"
 
+        # Привязка кнопки закрытия окна к методу close
         self.ui.pushButton.clicked.connect(self.close)
 
 
+# Инициализация главного окна
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_MainWindow()
+        self.ui = Ui_MainWindow()  # Инициализация интерфейса главного окна
         self.ui.setupUi(self)
 
-        # Привязка кнопок к методам
-        self.ui.button_info.clicked.connect(self.open_info_window)
-        self.ui.button_start.clicked.connect(self.generate_graph)
-        self.ui.button_reset.clicked.connect(self.restart_graph)
-        self.ui.button_print.clicked.connect(self.print_graph)
-        self.ui.button_excel.clicked.connect(self.open_excel)
-        self.ui.pushButton.clicked.connect(self.show_previous_graph)
-        self.ui.pushButton_2.clicked.connect(self.show_next_graph)
-        self.ui.button_upload.clicked.connect(self.upload_excel)
+        # Привязка кнопок к соответствующим методам
+        self.ui.button_info.clicked.connect(self.open_info_window)  # Кнопка открытия окна "Инфо"
+        self.ui.button_start.clicked.connect(self.generate_graph)  # Кнопка генерации графика
+        self.ui.button_reset.clicked.connect(self.restart_graph)  # Кнопка сброса графика
+        self.ui.button_print.clicked.connect(self.print_graph)  # Кнопка печати графика
+        self.ui.button_excel.clicked.connect(self.open_excel)  # Кнопка открытия Excel-файла
+        self.ui.pushButton.clicked.connect(self.show_previous_graph)  # Кнопка предыдущего графика
+        self.ui.pushButton_2.clicked.connect(self.show_next_graph)  # Кнопка следующего графика
+        self.ui.button_upload.clicked.connect(self.upload_excel)  # Кнопка загрузки Excel-файла
 
-        # Отключение кнопок до генерации графика
+        # Отключение некоторых кнопок до генерации графика
         self.ui.button_reset.setEnabled(False)
         self.ui.button_reset.setEnabled(False)
         self.ui.button_print.setEnabled(False)
         self.ui.button_excel.setEnabled(False)
 
-        # Кнопки стрелок до генерации графика невидимы
+        # Скрытие кнопок для переключения графиков до их генерации
         self.ui.pushButton.setHidden(True)
         self.ui.pushButton_2.setHidden(True)
 
-        # Привязываем изменения в каждом поле ввода к методу check_input_fields
+        # Привязка проверки заполнения полей ввода к методу check_input_fields
         self.ui.entry_t0.textChanged.connect(self.check_input_fields)
         self.ui.entry_tk.textChanged.connect(self.check_input_fields)
         self.ui.entry_dt1.textChanged.connect(self.check_input_fields)
@@ -67,28 +70,32 @@ class MainWindow(QMainWindow):
         self.ui.entry_m.textChanged.connect(self.check_input_fields)
         self.ui.entry_y.textChanged.connect(self.check_input_fields)
 
-        self.info_window = None
-        self.pixmap = None
+        # Переменные для хранения информации о графиках
+        self.info_window = None  # Окно с информацией
+        self.pixmap = None  # Изображение для отображения
 
-        # Создание счётчика графиков для перелистывания
-        self.graph_counter = 0
-        self.graph_paths = []
-        self.excel_paths = []
+        # Счётчик графиков и пути к ним
+        self.graph_counter = 0  # Счётчик графиков
+        self.graph_paths = []  # Пути к сгенерированным графикам
+        self.excel_paths = []  # Пути к сгенерированным Excel-файлам
 
+    # Обновление графика при изменении размера окна
     def resizeEvent(self, event):
         try:
-            self.update_graph()
+            self.update_graph()  # Обновляем график
         except:
             pass
         super().resizeEvent(event)
 
+    # Открытие окна "Инфо"
     def open_info_window(self):
         if self.info_window is None:
-            self.info_window = InfoWindow()
-        self.info_window.show()
+            self.info_window = InfoWindow()  # Создание окна, если его еще нет
+        self.info_window.show()  # Отображение окна
 
+    # Проверка, заполнены ли все поля ввода
     def check_input_fields(self):
-        # Если хотя бы одно поле ввода не пустое, активируем кнопку
+        # Если хотя бы одно поле заполнено, включаем кнопку сброса
         if (self.ui.entry_t0.text() or self.ui.entry_tk.text() or self.ui.entry_dt1.text() or self.ui.entry_dt2.text()
                 or self.ui.entry_x0.text() or self.ui.entry_v0.text() or self.ui.entry_k.text()
                 or self.ui.entry_m.text() or self.ui.entry_y.text()):
@@ -96,19 +103,21 @@ class MainWindow(QMainWindow):
         else:
             self.ui.button_reset.setEnabled(False)
 
+    # Отображение ошибки при некорректных данных
     def error_incorrect_input_message(self, title, message):
-        error_dialog = QMessageBox()
-        icon = QPixmap(Path("images/error.svg"))
+        error_dialog = QMessageBox()  # Диалоговое окно для ошибки
+        icon = QPixmap(Path("images/error.svg"))  # Установка иконки ошибки
         error_dialog.setWindowIcon(icon)
-        error_dialog.setIcon(QMessageBox.Critical)
-        error_dialog.setWindowTitle(title)
-        error_dialog.setText(message)
-        error_dialog.setStandardButtons(QMessageBox.Ok)
-        error_dialog.exec()
+        error_dialog.setIcon(QMessageBox.Critical)  # Установка иконки критической ошибки
+        error_dialog.setWindowTitle(title)  # Заголовок окна
+        error_dialog.setText(message)  # Сообщение ошибки
+        error_dialog.setStandardButtons(QMessageBox.Ok)  #Создание в окне кнопки "ОК" для выхода
+        error_dialog.exec()  # Отображение диалогового окна
 
+    # Метод генерации графика на основе данных
     def generate_graph(self):
         try:
-            # Получение данных из полей ввода
+            # Чтение данных из полей ввода
             t0 = float(self.ui.entry_t0.text().replace(',', '.'))  # начальный момент времени
             tk = float(self.ui.entry_tk.text().replace(',', '.'))  # конечный момент времени
             x0 = float(self.ui.entry_x0.text().replace(',', '.'))  # начальное положение груза
@@ -130,66 +139,76 @@ class MainWindow(QMainWindow):
                 return
 
         except ValueError:
+            # Ошибка, если данные введены некорректно
             self.error_incorrect_input_message("Ошибка ввода данных",
                                                "Убедитесь, что все поля заполнены корректно "
                                                "(введены только цифры"
                                                " и цифры через запятую или точку).")
             return
 
+        # Рассчитываем количество шагов для временных интервалов
+        # ceil() используется для округления результата вверх, чтобы гарантировать, что мы захватим весь интервал
         N = ceil((tk - t0) / dt1)
         M = ceil(dt1 / dt2)
 
-        # Временные шаги
-        t = list(False for _ in range(0, N * M + 2, 1))
-
-        # Массивы для хранения значений скорости и положения
-        x = list(False for _ in range(0, N * M + 2, 1))
-        v = list(False for _ in range(0, N * M + 2, 1))
-
-        # Энергия (если гамма = 0)
-        e = list(False for _ in range(0, N * M + 2, 1))
+        # Инициализация массивов для времени, скорости, положения и энергии
+        t = list(False for _ in range(0, N * M + 2, 1))  # Массив времени
+        x = list(False for _ in range(0, N * M + 2, 1))  # Массив положения
+        v = list(False for _ in range(0, N * M + 2, 1))  # Массив скорости
+        e = list(False for _ in range(0, N * M + 2, 1))   # Массив энергии (если трение в системе отсутствует)
 
         try:
-            # Начальные условия
+            # Установка начальных условий
             x[0] = x0
             v[0] = v0
             t[0] = t0
-
+            # Начальное значение полной энергии
             e[0] = (m * v[0] ** 2 + k * x[0] ** 2) / 2
 
             index = 1
 
             # Численное решение уравнения методом Эйлера
-            for i in range(1, N + 1):
-                for j in range(1, M + 1):
+            for i in range(1, N + 1):  # Перебор шагов по сетке времени dt1
+                for j in range(1, M + 1):  # Вложенный цикл для временной сетки dt2
+                    # Корректировка времени для шагов по dt2
                     if t[index - 1] + dt2 > t0 + dt1 * i:
                         t[index] = t0 + dt1 * i
                     else:
                         t[index] = t[index - 1] + dt2
 
+                    # Остановка, если текущее время превышает конечное время
                     if t[index] > tk:
                         t[index] = tk
+
+                    # Расчёт скорости и положения методом Эйлера
                     v[index] = v[index - 1] + (-(k / m if m > 0 else 0) * x[index - 1] - y * v[index - 1]) * dt2
                     x[index] = x[index - 1] + v[index] * dt2
 
+                    # Расчёт полной энергии на каждом шаге, если время совпадает с целым шагом по dt1
                     if isclose(t[index], t0 + dt1 * i, rel_tol=0.001):
                         e[index] = (m * v[index] ** 2 + k * x[index] ** 2) / 2
+
+                    # Прерывание цикла, если достигнуто конечное время
                     if t[index] == tk:
                         break
 
+                    # Увеличение индекса для перехода к следующему шагу
                     index += 1
 
+            # Если конечное время tk не оказалось в массиве t, то оно добавляется вручную
             if tk not in t:
-                while t[-1] is False:
+                while t[-1] is False:  # Удаление лишних элементов с конца массива
                     del t[-1]
                     del v[-1]
                     del x[-1]
                     del e[-1]
-                t.append(tk)
-                v.append(v[-1] + (-(k / m if m > 0 else 0) ** 2 * x[-1] - y * v[-1]) * dt2)
-                x.append(x[-1] + v[-1] * dt2)
-                e.append((m * v[-1] ** 2 + k * x[-1] ** 2) / 2)
+                t.append(tk)  # Добавление tk в массив времени
+                # Расчёт последней скорости и положения на основе конечного времени
+                v.append(v[-1] + (-(k / m if m > 0 else 0) ** 2 * x[-1] - y * v[-1]) * dt2)  # Расчёт последней скорости
+                x.append(x[-1] + v[-1] * dt2)  # Расчёт последнего положения
+                e.append((m * v[-1] ** 2 + k * x[-1] ** 2) / 2)  # Расчёт последней энергии
             else:
+                # Если tk присутствует в массиве t несколько раз, оставляем только одно вхождение
                 count = t.count(tk)
                 if count == 1:
                     while t[-1] != tk:
@@ -211,16 +230,17 @@ class MainWindow(QMainWindow):
                         if count == 1:
                             flag = False
         except Exception:
+            # Обработка ошибок и вывод сообщения об ошибке при некорректных входных данных
             self.error_incorrect_input_message("Ошибка обработки", "Входные параметры приводят"
                                                                    " к слишком большим числам. "
                                                                    "Попробуйте изменить вводимые числа.")
             return
 
-        # Проверка, существует ли директория "graph"
+        # Проверка, существует ли директория для сохранения графиков, если нет - создается
         if not os.path.exists("graph"):
             os.makedirs("graph")
 
-        # Пресет для заголовков таблицы
+        # Функция для оформления заголовков в Excel (применение жирного шрифта и тонкой границы)
         def header_preset(ws, columns):
             thin_border = Border(
                 left=Side(style='thin'),
@@ -240,20 +260,23 @@ class MainWindow(QMainWindow):
                 column_letter = get_column_letter(column_cells[0].column)
                 ws.column_dimensions[column_letter].width = adjusted_width
 
-        # Функция для создания Excel-файла и применения пресета
+        # Функция для создания Excel файла с заданным стилем для заголовков
         def create_excel_with_preset(file_path, data, columns, M):
-            df = pd.DataFrame(data)
-            df.to_excel(file_path, index=False)
-            wb = load_workbook(file_path)
-            ws = wb.active
-            last_row = ws.max_row
-            header_preset(ws, columns)
+            df = pd.DataFrame(data)  # Создание DataFrame из данных
+            df.to_excel(file_path, index=False)  # Сохранение данных в Excel файл
+            wb = load_workbook(file_path)  # Открытие файла
+            ws = wb.active  # Выбор активного листа
+            last_row = ws.max_row  # Определение последней строки
+            header_preset(ws, columns)  # Применение стилей к заголовкам
+
+            # Заливка строк разными цветами для выделения данных
             filler1 = PatternFill(start_color='FFCBDB', end_color='FFCBDB', fill_type='solid')
             filler2 = PatternFill(start_color='FFC8A8', end_color='FFC8A8', fill_type='solid')
             filler3 = PatternFill(start_color='BDECB6', end_color='BDECB6', fill_type='solid')
             for row in range(2, last_row + 1):
                 if (row - 2) % M == 0:
                     if file_path == excel_file_path_1 and y == 0:
+                        # Оформление для определенных файлов и значений трения
                         ws[f'A{row}'].fill = filler1
                         ws[f'B{row}'].fill = filler1
                         ws[f'C{row}'].fill = filler1
@@ -268,12 +291,14 @@ class MainWindow(QMainWindow):
                     else:
                         ws[f'A{row}'].fill = filler1
                         ws[f'B{row}'].fill = filler1
+            # Сохранение изменений в файл
             wb.save(file_path)
             wb.close()
 
-        # Создание графика xvt
+        # Создание графиков и сохранение их в файлы
+        # График x(t) и v(t)
         fig1, ax1 = plt.subplots(figsize=(10, 6))
-        fig1.patch.set_facecolor((1, 1, 1, 0))  # Устанавливаем прозрачный фон для холста
+        fig1.patch.set_facecolor((1, 1, 1, 0))  # Установка прозрачного фона для графика
 
         # Построение графика x(t) - синяя линия
         ax1.plot(t, x, label="x(t) - Положение", color="blue")
@@ -290,26 +315,28 @@ class MainWindow(QMainWindow):
         ax1.grid(True)
         ax1.legend()
 
-        # Сохранение графика xvt в файл с прозрачным фоном
+        # Сохранение графика x(t) и v(t) в файл с прозрачным фоном
         graph_path_1 = Path("graph/oscillator_graph_xvt.png")
         plt.savefig(graph_path_1, transparent=True)
-        plt.close()
+        plt.close()  # Закрываем фигуру после сохранения
 
         # Создание Excel-файла для графика xvt
         excel_file_path_1 = Path("graph/oscillator_data_xvt.xlsx")
         if y == 0:
+            # Если трение y равно 0, добавляем столбец с полной энергией и её расчёт
             data = {"Время t": t, "Положение x": x, "Скорость v": v,
                     "Полная энергия Ei": [info if info else -2 for info in e]}
             create_excel_with_preset(excel_file_path_1, data, ["A1", "B1", "C1", "D1"], M)
         else:
+            # Если трение y не равно 0, создаем Excel-файл без столбца полной энергии
             data = {"Время t": t, "Положение x": x, "Скорость v": v}
             create_excel_with_preset(excel_file_path_1, data, ["A1", "B1", "C1"], M)
 
-        # Дополнительные операции, если y == 0
+        # Дополнительные операции, если трение y == 0
         if y == 0:
-            wb = load_workbook(excel_file_path_1)
-            ws = wb.active
-            last_row = ws.max_row
+            wb = load_workbook(excel_file_path_1)  # Открываем созданный Excel-файл
+            ws = wb.active  # Выбираем активный лист
+            last_row = ws.max_row  # Получаем номер последней строки
 
             # Очистка значений в колонке "Полная энергия Ei", если индекс не кратен M
             for cell in range(2, last_row + 1):
@@ -318,33 +345,33 @@ class MainWindow(QMainWindow):
 
             # Добавление заголовков и формул для расчета энергии и погрешностей
             ws['E1'] = "Среднее значение полной энергии Esr"
-            ws['E2'] = f"=AVERAGE(D2:D{last_row})"
+            ws['E2'] = f"=AVERAGE(D2:D{last_row})"  # Формула для среднего значения энергии
             ws['F1'] = "Относительная погрешность по энергии di"
             for row in range(2, last_row + 1):
                 if (row - 2) % M == 0:
-                    ws[f'F{row}'] = f"=ABS($E$2 - $D{row}) / ABS($E$2)"
+                    ws[f'F{row}'] = f"=ABS($E$2 - $D{row}) / ABS($E$2)"  # Формула для относительной погрешности
             ws['G1'] = "Среднеквадратичная относительная погрешность dsr"
             ws['G2'] = f"=SQRT(1 / {N} * SUMPRODUCT(($F$2:$F${last_row})^2))"
 
-            # Применение пресета к заголовкам
+            # Применение стиля к заголовкам
             header_preset(ws, ["A1", "B1", "C1", "D1", "E1", "F1", "G1"])
 
-            wb.save(excel_file_path_1)
-            wb.close()
+            wb.save(excel_file_path_1)  # Сохраняем изменения в файл
+            wb.close()  # Закрываем файл
 
-        # Создание Excel-файла для графика xt
+        # Создание Excel-файлов для графика x(t)
         excel_file_path_2 = Path("graph/oscillator_data_xt.xlsx")
         data = {"Время t": t, "Положение x": x}
         create_excel_with_preset(excel_file_path_2, data, ["A1", "B1"], M)
 
-        # Создание Excel-файла для графика vt
+        # Создание Excel-файлов для графика v(t)
         excel_file_path_3 = Path("graph/oscillator_data_vt.xlsx")
         data = {"Время t": t, "Скорость v": v}
         create_excel_with_preset(excel_file_path_3, data, ["A1", "B1"], M)
 
-        # Создание графика xt
-        fig2, ax2 = plt.subplots(figsize=(10, 6))
-        fig2.patch.set_facecolor((1, 1, 1, 0))  # Устанавливаем прозрачный фон для холста
+        # Создание графика x(t)
+        fig2, ax2 = plt.subplots(figsize=(10, 6))  # Создаем фигуру и ось для второго графика
+        fig2.patch.set_facecolor((1, 1, 1, 0))  # Устанавливаем прозрачный фон для фигуры
 
         # Построение графика x(t) - синяя линия
         ax2.plot(t, x, label="x(t) - Положение", color="blue")
@@ -358,11 +385,11 @@ class MainWindow(QMainWindow):
         # Сохранение графика xt в файл с прозрачным фоном
         graph_path_2 = Path("graph/oscillator_graph_xt.png")
         plt.savefig(graph_path_2, transparent=True)
-        plt.close()
+        plt.close()  # Закрываем фигуру после сохранения
 
-        # Создание графика vt
-        fig3, ax3 = plt.subplots(figsize=(10, 6))
-        fig3.patch.set_facecolor((1, 1, 1, 0))  # Устанавливаем прозрачный фон для холста
+        # Создание графика v(t)
+        fig3, ax3 = plt.subplots(figsize=(10, 6))  # Создаем фигуру и ось для третьего графика
+        fig3.patch.set_facecolor((1, 1, 1, 0))  # Устанавливаем прозрачный фон для фигуры
 
         # Построение графика v(t) - розовая линия
         ax3.plot(t, v, label="v(t) - Скорость", color="pink")
@@ -373,23 +400,23 @@ class MainWindow(QMainWindow):
         ax3.grid(True)
         ax3.legend()
 
-        # Сохранение графика vt в файл с прозрачным фоном
+        # Сохранение графика v(t) в файл с прозрачным фоном
         graph_path_3 = Path("graph/oscillator_graph_vt.png")
         plt.savefig(graph_path_3, transparent=True)
-        plt.close()
+        plt.close()  # Закрываем фигуру после сохранения
 
-        # Сохранение путей к графикам и файлам в список
+        # Сохранение путей к графикам и Excel-файлам в списки для дальнейшего использования
         self.graph_paths = [graph_path_1, graph_path_2, graph_path_3]
         self.excel_paths = [excel_file_path_1, excel_file_path_2, excel_file_path_3]
 
-        # Установка начального изображения
+        # Установка начального изображения графика (индекс 0)
         self.graph_counter = 0
-        self.update_graph()
+        self.update_graph()  # Обновляем отображение графика
 
-        # Делаем видимыми стрелочки переключения
-        self.ui.pushButton.setHidden(False)
-        self.ui.pushButton.setEnabled(False)
-        self.ui.pushButton_2.setHidden(False)
+        # Делаем видимыми кнопки для переключения графиков
+        self.ui.pushButton.setHidden(False)  # Кнопка "Назад"
+        self.ui.pushButton.setEnabled(False)  # Отключаем кнопку "Назад", если это первый график
+        self.ui.pushButton_2.setHidden(False)  # Кнопка "Вперед"
 
         # Разблокировка кнопок "Сброс", "Печать", "Excel"
         self.ui.button_reset.setEnabled(True)
@@ -400,9 +427,9 @@ class MainWindow(QMainWindow):
         # Переключение на следующий график
         if self.graph_counter < len(self.graph_paths) - 1:
             self.graph_counter += 1
-            self.update_graph()
+            self.update_graph()  # Обновляем отображение нового графика
 
-        # Если мы достигли последнего графика, отключаем кнопку "Вперед"
+        # Если достигли последнего графика, отключаем кнопку "Вперед"
         if self.graph_counter == len(self.graph_paths) - 1:
             self.ui.pushButton_2.setEnabled(False)
 
@@ -414,9 +441,9 @@ class MainWindow(QMainWindow):
         # Переключение на предыдущий график
         if self.graph_counter > 0:
             self.graph_counter -= 1
-            self.update_graph()
+            self.update_graph()  # Обновляем отображение нового графика
 
-        # Если мы достигли первого графика, отключаем кнопку "Назад"
+        # Если достигли первого графика, отключаем кнопку "Назад"
         if self.graph_counter == 0:
             self.ui.pushButton.setEnabled(False)
 
@@ -425,10 +452,10 @@ class MainWindow(QMainWindow):
             self.ui.pushButton_2.setEnabled(True)
 
     def update_graph(self):
-        # Обновляем QPixmap текущего графика и отображаем его
+        # Обновляем изображение текущего графика и отображаем его
         self.pixmap = QPixmap(self.graph_paths[self.graph_counter])
 
-        graph_size = self.ui.label_graph.size()
+        graph_size = self.ui.label_graph.size()  # Получаем размер виджета для отображения графика
 
         # Масштабируем изображение, сохраняя пропорции
         scaled_pixmap = self.pixmap.scaled(graph_size, Qt.KeepAspectRatio, Qt.SmoothTransformation)
@@ -447,6 +474,7 @@ class MainWindow(QMainWindow):
         self.ui.entry_k.clear()
         self.ui.entry_m.clear()
         self.ui.entry_y.clear()
+
         # Очищение лейбла с графиком
         self.ui.label_graph.clear()
 
@@ -501,8 +529,9 @@ class MainWindow(QMainWindow):
         # Открытие Excel файла, связанного с текущим графиком
         excel_file_path = self.excel_paths[self.graph_counter]
         if os.path.exists(excel_file_path):
-            os.startfile(excel_file_path)
+            os.startfile(excel_file_path)  # Открываем файл с помощью стандартного приложения
         else:
+            # Отображаем сообщение об ошибке, если файл не найден
             self.error_incorrect_input_message("Ошибка при открытии файла", "Файл не найден в директории.")
 
     def upload_excel(self):
@@ -515,9 +544,6 @@ class MainWindow(QMainWindow):
             try:
                 # Чтение данных из Excel-файла
                 df = pd.read_excel(file_name)
-
-                # Предполагается, что файл Excel содержит следующие столбцы:
-                # 't0', 'tk', 'dt1', 'dt2', 'x0', 'v0', 'w0', 'y'
 
                 # Заполнение полей ввода данными из Excel
                 self.ui.entry_t0.setText(str(df["t0"].iloc[0]))
@@ -534,14 +560,15 @@ class MainWindow(QMainWindow):
                 self.check_input_fields()
 
             except Exception as e:
+                # Отображаем сообщение об ошибке, если файл некорректен
                 self.error_incorrect_input_message("Ошибка при чтении файла", f"Проверьте корректность "
                                                                               f"формата ввода данных в файле.")
 
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
+    app = QApplication(sys.argv)  # Создаем объект приложения
 
-    main_window = MainWindow()
-    main_window.show()
+    main_window = MainWindow()  # Создаем главное окно приложения
+    main_window.show()  # Показываем главное окно
 
-    sys.exit(app.exec())
+    sys.exit(app.exec())  # Запускаем основной цикл приложения и завершаем его при закрытии
