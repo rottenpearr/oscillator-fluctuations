@@ -20,4 +20,4 @@
 
 ## Автор:
 
-Алёна Маркова (aka rottenpearr 🤠)
+Алёна Маркова (rottenpear 🤠)
